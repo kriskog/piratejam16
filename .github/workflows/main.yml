@@ -1,8 +1,0 @@
----
-- name: godot-ci
-  uses: abarichello/godot-ci@4.3-stable
-- name: Run GUT Tests
-  uses: yeslayla/run-gut-tests-action@v1.0.1
-  with:
-    containerImage: null
-    directory: null
