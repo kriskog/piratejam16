@@ -1,12 +1,8 @@
+---
 - name: godot-ci
   uses: abarichello/godot-ci@4.3-stable
-
 - name: Run GUT Tests
-  # You may pin to the exact commit or the version.
-  # uses: yeslayla/run-gut-tests-action@db0ad0d03b25a56ca0a5911e45ebb365a1a267bd
   uses: yeslayla/run-gut-tests-action@v1.0.1
   with:
-    # The container to run tests inside of.
-    containerImage: # optional, default is barichello/godot-ci:latest
-    # The name directory to run tests in.
-    directory: # optional
+    containerImage: null
+    directory: null
