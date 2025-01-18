@@ -17,8 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: Scony/godot-gdscript-toolkit@master
-    - run: gdformat --check
-    - run: gdlint
+    - run: gdformat $PROJECT_PATH --check
+    - run: gdlint $PROJECT_PATH
   
   test:
     name: 'Godot Unit Test'
