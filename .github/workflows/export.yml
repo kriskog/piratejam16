@@ -86,4 +86,4 @@ jobs:
           CHANNEL: HTML5
           ITCH_GAME: ${{ secrets.ITCHIO_GAME }}
           ITCH_USER: ${{ secrets.ITCHIO_USERNAME }}
-          PACKAGE: build/web
+          PACKAGE: web
