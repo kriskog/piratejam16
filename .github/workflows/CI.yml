@@ -20,7 +20,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
       
-      - name: Run GUT Tests
+      - name: Run GUT tests
         uses: yeslayla/run-gut-tests-action@v1.0.1
+        with:
+          godot_Executable: 'godot --headless'
