@@ -10,28 +10,26 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  PROJECT_PATH: project/
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.3
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code
         uses: actions/checkout@v4
-      
-      # Import editor to import assets for GUT tests, normally gitignored. Cant be done headless.
-      - name: Run Editor
-        run: |
-          apt-get update
-          apt-get install -y xvfb
-          export DISPLAY=:99
-          Xvfb :99 -screen 0 1280x1024x24 &
-          docker run --rm -v ${{ github.workspace }}:/project barichello/godot-ci:latest godot --editor --path /project
-      
+
       - name: Run GUT tests
         run: |
-          docker run --rm -v ${{ github.workspace }}:/project barichello/godot-ci:latest godot --headless --import -d -s --path /project addons/gut/gut_cmdln.gd
+          cd $PROJECT_PATH
+          godot --headless --import
+          godot --headless -s --path "$PWD" addons/gut/gut_cmdln.gd -gexit
