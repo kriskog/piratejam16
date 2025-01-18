@@ -22,7 +22,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code
         uses: actions/checkout@v4
-        
+      
+      # Import editor to import assets for GUT tests, normally gitignored. Cant be done headless.
+      - name: Run Editor
+        run: |
+          apt-get update
+          apt-get install -y xvfb
+          export DISPLAY=:99
+          Xvfb :99 -screen 0 1280x1024x24 &
+          docker run --rm -v ${{ github.workspace }}:/project barichello/godot-ci:latest godot --editor --path /project
+      
       - name: Run GUT tests
         run: |
           docker run --rm -v ${{ github.workspace }}:/project barichello/godot-ci:latest godot --headless --import -d -s --path /project addons/gut/gut_cmdln.gd
