@@ -24,6 +24,4 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Run GUT tests
-        uses: yeslayla/run-gut-tests-action@v1.0.1
-        with:
-          godot_Executable: 'godot --headless'
+        uses: kriskog/run-gut-tests-action@master
