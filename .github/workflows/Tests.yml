@@ -23,10 +23,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         
-      - name: Run Godot to import resources
-        run: |
-          docker run --rm -v ${{ github.workspace }}:/project barichello/godot-ci:latest godot --editor --path /project
-      
       - name: Run GUT tests
         run: |
-          docker run --rm -v ${{ github.workspace }}:/project barichello/godot-ci:latest godot --headless -d -s --path /project addons/gut/gut_cmdln.gd
+          docker run --rm -v ${{ github.workspace }}:/project barichello/godot-ci:latest godot --headless --import -d -s --path /project addons/gut/gut_cmdln.gd

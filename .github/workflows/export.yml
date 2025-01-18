@@ -2,6 +2,7 @@ name: "godot-ci export"
 on: 
     push:
         branches: [ "main" ]
+    workflow_dispatch:
 
 env:
   GODOT_VERSION: 4.3
