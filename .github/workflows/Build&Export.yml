@@ -8,7 +8,7 @@ on:
 env:
   GODOT_VERSION: 4.3
   EXPORT_NAME: PirateJam16
-  PROJECT_PATH: ./source/
+  PROJECT_PATH: .
 
 jobs:
   export-windows:

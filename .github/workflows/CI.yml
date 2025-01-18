@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT_PATH: ./source/
+  LINT_PATH: ./source/
 
 jobs:
   static-checks:
@@ -17,8 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: Scony/godot-gdscript-toolkit@master
-    - run: gdformat $PROJECT_PATH --check
-    - run: gdlint $PROJECT_PATH
+    - run: gdformat $LINT_PATH --check
+    - run: gdlint $LINT_PATH
   
   test:
     name: 'Godot Unit Test'
