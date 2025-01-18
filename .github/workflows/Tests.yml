@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT_PATH: project/
+  PROJECT_PATH: "."
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -30,6 +30,5 @@ jobs:
 
       - name: Run GUT tests
         run: |
-          cd $PROJECT_PATH
           godot --headless --import
           godot --headless -s --path "$PWD" addons/gut/gut_cmdln.gd -gexit
