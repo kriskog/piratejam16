@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT_PATH: .
+  PROJECT_PATH: ./source/
 
 jobs:
   static-checks:
