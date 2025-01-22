@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cn762radik7xw"]
+
+[ext_resource type="FontFile" uid="uid://btd58n2qlgnwm" path="res://assets/fonts/Kenney Rocket Square.ttf" id="1_6if28"]
+
+[resource]
+default_font = ExtResource("1_6if28")
+Button/colors/font_focus_color = Color(0.184679, 0.453748, 0, 1)
+Button/colors/font_hover_color = Color(0.184314, 0.454902, 0, 1)
