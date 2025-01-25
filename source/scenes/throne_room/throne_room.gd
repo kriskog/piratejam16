@@ -58,12 +58,24 @@ var _reagents: int = 0:
 @onready var money_bar: ProgressBar = $UI/SecondaryResources/MoneyBar
 @onready var cult_bar: ProgressBar = $UI/SecondaryResources/CultSizeBar
 @onready var reagent_bar: ProgressBar = $UI/SecondaryResources/ReagentsBar
+@onready var resource_menu: MenuButton = $UI/ResourceDebugging
 #endregion
 
 
 #region Game Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	resource_menu.get_popup().add_item("Influence Up")
+	resource_menu.get_popup().add_item("Influence Down")
+	resource_menu.get_popup().add_item("Chaos Up")
+	resource_menu.get_popup().add_item("Chaos Down")
+	resource_menu.get_popup().add_item("Money Up")
+	resource_menu.get_popup().add_item("Money Down")
+	resource_menu.get_popup().add_item("Cult Size Up")
+	resource_menu.get_popup().add_item("Cult Size Down")
+	resource_menu.get_popup().add_item("Reagents Up")
+	resource_menu.get_popup().add_item("Reagents Down")
+	resource_menu.get_popup().id_pressed.connect(_handle_resources)
 	influence_full.connect(_influence_win)
 	influence_empty.connect(_influence_loss)
 	chaos_full.connect(_chaos_full)
@@ -88,7 +100,18 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-
+func _handle_resources(id: int) -> void:
+	match id:
+		0: set_influence(get_influence() + 10)
+		1: set_influence(get_influence() - 10)
+		2: set_chaos(get_chaos() + 10)
+		3: set_chaos(get_chaos() - 10)
+		4: set_money(get_money() + 10)
+		5: set_money(get_money() - 10)
+		6: set_cult_size(get_cult_size() + 10)
+		7: set_cult_size(get_cult_size() - 10)
+		8: set_reagents(get_reagents() + 10)
+		9: set_reagents(get_reagents() - 10)
 #endregion
 
 
@@ -179,73 +202,73 @@ func set_reagents(value: int) -> void:
 
 #region Signal Functions
 func _influence_win() -> void:
-	pass
+	print("Influence Max")
 
 
 func _influence_loss() -> void:
-	pass
+	print("Influence Empty")
 
 
 func _chaos_full() -> void:
-	pass
+	print("Chaos Full")
 
 
 func _chaos_empty() -> void:
-	pass
+	print("Chaos Empty")
 
 
 func _chaos_low() -> void:
-	pass
+	print("Chaos Low")
 
 
 func _chaos_high() -> void:
-	pass
+	print("Chaos High")
 
 
 func _money_full() -> void:
-	pass
+	print("Money Full")
 
 
 func _money_empty() -> void:
-	pass
+	print("Money Empty")
 
 
 func _money_low() -> void:
-	pass
+	print("Money Low")
 
 
 func _money_high() -> void:
-	pass
+	print("Money High")
 
 
 func _cult_size_full() -> void:
-	pass
+	print("Cult Size Full")
 
 
 func _cult_size_empty() -> void:
-	pass
+	print("Cult Size Empty")
 
 
 func _cult_size_low() -> void:
-	pass
+	print("Cult Size Low")
 
 
 func _cult_size_high() -> void:
-	pass
+	print("Cult Size High")
 
 
 func _reagents_full() -> void:
-	pass
+	print("Reagents Full")
 
 
 func _reagents_empty() -> void:
-	pass
+	print("Reagents Empty")
 
 
 func _reagents_low() -> void:
-	pass
+	print("Reagents Low")
 
 
 func _reagents_high() -> void:
-	pass
+	print("Reagents High")
 #endregion
