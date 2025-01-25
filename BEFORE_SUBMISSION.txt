@@ -1,0 +1,9 @@
+Remove and replace assets in Assets\REPLACE_BEFORE_SUBMISSIONS folder
+
+Assets used:
+	Throneroom placeholder bg
+	Main menu bg
+
+Get rid of temporary elements
+	scenes\ui\elements\TEMPORARYBACKBUTTON.tscn
+	scenes\ui\elements\TEMPORARYBACKBUTTON.gd

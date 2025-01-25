@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://7codxq0yg473"]
+
+[ext_resource type="Script" path="res://source/scenes/ui/elements/temporarybackbutton.gd" id="1_6b0dm"]
+[ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_vckxt"]
+
+[node name="TEMPORARYBACKBUTTON" type="Button"]
+theme = ExtResource("1_vckxt")
+text = "BACK TO MAIN MENU"
+script = ExtResource("1_6b0dm")
