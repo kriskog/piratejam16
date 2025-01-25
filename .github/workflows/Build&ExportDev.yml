@@ -1,4 +1,4 @@
-name: "Build & Export"
+name: "Build & Export Dev"
 
 on:
   pull_request:
