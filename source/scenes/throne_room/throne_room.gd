@@ -31,6 +31,9 @@ const MAX_REAGENTS: int = 100
 #endregion
 
 #region Private Variables
+# Saves
+var _saves: Array = []
+
 # Main game resource
 var _influence: int = 0:
 	get = get_influence,
@@ -49,6 +52,7 @@ var _cult_size: int = 0:
 var _reagents: int = 0:
 	get = get_reagents,
 	set = set_reagents
+
 #endregion
 
 #region Node Variables
@@ -58,12 +62,27 @@ var _reagents: int = 0:
 @onready var money_bar: ProgressBar = $UI/SecondaryResources/MoneyBar
 @onready var cult_bar: ProgressBar = $UI/SecondaryResources/CultSizeBar
 @onready var reagent_bar: ProgressBar = $UI/SecondaryResources/ReagentsBar
+@onready var resource_menu: MenuButton = $UI/ResourceDebugging
+@onready var save_states: MenuButton = $UI/SaveStates/Saves
 #endregion
 
 
 #region Game Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_set_saves()
+	save_states.get_popup().id_pressed.connect(_handle_load_save)
+	resource_menu.get_popup().add_item("Influence Up")
+	resource_menu.get_popup().add_item("Influence Down")
+	resource_menu.get_popup().add_item("Chaos Up")
+	resource_menu.get_popup().add_item("Chaos Down")
+	resource_menu.get_popup().add_item("Money Up")
+	resource_menu.get_popup().add_item("Money Down")
+	resource_menu.get_popup().add_item("Cult Size Up")
+	resource_menu.get_popup().add_item("Cult Size Down")
+	resource_menu.get_popup().add_item("Reagents Up")
+	resource_menu.get_popup().add_item("Reagents Down")
+	resource_menu.get_popup().id_pressed.connect(_handle_resources)
 	influence_full.connect(_influence_win)
 	influence_empty.connect(_influence_loss)
 	chaos_full.connect(_chaos_full)
@@ -89,6 +108,21 @@ func _process(_delta: float) -> void:
 	pass
 
 
+func _set_saves() -> void:
+	# Reset saves array to avoid duplicates
+	_saves = []
+	save_states.get_popup().clear()
+	var dir = DirAccess.open("res://saves")
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			_saves.append(file_name)
+			file_name = dir.get_next()
+	for save in _saves:
+		save_states.get_popup().add_item(save)
+
+
 #endregion
 
 
@@ -99,7 +133,8 @@ func get_influence() -> int:
 
 func set_influence(value: int) -> void:
 	_influence = clamp(value, 0, MAX_INFLUENCE)
-	influence_bar.value = _influence
+	if influence_bar:
+		influence_bar.value = _influence
 	if _influence == MAX_INFLUENCE:
 		influence_full.emit()
 	elif _influence == 0:
@@ -111,15 +146,18 @@ func get_chaos() -> int:
 
 
 func set_chaos(value: int) -> void:
+	# Storing previous value to check if the threshold is being met from the right direction
+	var previous_chaos = _chaos
 	_chaos = clamp(value, 0, MAX_CHAOS)
-	chaos_bar.value = _chaos
+	if chaos_bar:
+		chaos_bar.value = _chaos
 	if _chaos == MAX_CHAOS:
 		chaos_full.emit()
-	elif _chaos >= (MAX_CHAOS * 0.7):
+	elif previous_chaos < (MAX_CHAOS * 0.7) && _chaos >= (MAX_CHAOS * 0.7):
 		chaos_high.emit()
 	elif _chaos == 0:
 		chaos_empty.emit()
-	elif _chaos <= (MAX_CHAOS * 0.3):
+	elif previous_chaos > (MAX_CHAOS * 0.3) && _chaos <= (MAX_CHAOS * 0.3):
 		chaos_low.emit()
 
 
@@ -128,15 +166,18 @@ func get_money() -> int:
 
 
 func set_money(value: int) -> void:
+	# Storing previous value to check if the threshold is being met from the right direction
+	var previous_money = _money
 	_money = clamp(value, 0, MAX_MONEY)
-	money_bar.value = _money
+	if money_bar:
+		money_bar.value = _money
 	if _money == MAX_MONEY:
 		money_full.emit()
-	elif _money >= (MAX_MONEY * 0.7):
+	elif previous_money < (MAX_MONEY * 0.7) && _money >= (MAX_MONEY * 0.7):
 		money_high.emit()
 	elif _money == 0:
 		money_empty.emit()
-	elif _money <= (MAX_MONEY * 0.3):
+	elif previous_money > (MAX_MONEY * 0.3) && _money <= (MAX_MONEY * 0.3):
 		money_low.emit()
 
 
@@ -145,15 +186,18 @@ func get_cult_size() -> int:
 
 
 func set_cult_size(value: int) -> void:
+	# Storing previous value to check if the threshold is being met from the right direction
+	var previous_cult_size = _cult_size
 	_cult_size = clamp(value, 0, MAX_CULT_SIZE)
-	cult_bar.value = _cult_size
+	if cult_bar:
+		cult_bar.value = _cult_size
 	if _cult_size == MAX_CULT_SIZE:
 		cult_size_full.emit()
-	elif _cult_size >= (MAX_CULT_SIZE * 0.7):
+	elif previous_cult_size < (MAX_CULT_SIZE * 0.7) && _cult_size >= (MAX_CULT_SIZE * 0.7):
 		cult_size_high.emit()
 	elif _cult_size == 0:
 		cult_size_empty.emit()
-	elif _cult_size <= (MAX_CULT_SIZE * 0.3):
+	elif previous_cult_size > (MAX_CULT_SIZE * 0.3) && _cult_size <= (MAX_CULT_SIZE * 0.3):
 		cult_size_low.emit()
 
 
@@ -162,15 +206,18 @@ func get_reagents() -> int:
 
 
 func set_reagents(value: int) -> void:
+	# Storing previous value to check if the threshold is being met from the right direction
+	var previous_reagents = _reagents
 	_reagents = clamp(value, 0, MAX_REAGENTS)
-	reagent_bar.value = _reagents
+	if reagent_bar:
+		reagent_bar.value = _reagents
 	if _reagents == MAX_REAGENTS:
 		reagents_full.emit()
-	elif _reagents >= (MAX_REAGENTS * 0.7):
+	elif previous_reagents < (MAX_REAGENTS * 0.7) && _reagents >= (MAX_REAGENTS * 0.7):
 		reagents_high.emit()
 	elif _reagents == 0:
 		reagents_empty.emit()
-	elif _reagents <= (MAX_REAGENTS * 0.3):
+	elif previous_reagents > (MAX_REAGENTS * 0.3) && _reagents <= (MAX_REAGENTS * 0.3):
 		reagents_low.emit()
 
 
@@ -179,73 +226,129 @@ func set_reagents(value: int) -> void:
 
 #region Signal Functions
 func _influence_win() -> void:
-	pass
+	print("Influence Max")
 
 
 func _influence_loss() -> void:
-	pass
+	print("Influence Empty")
 
 
 func _chaos_full() -> void:
-	pass
+	print("Chaos Full")
 
 
 func _chaos_empty() -> void:
-	pass
+	print("Chaos Empty")
 
 
 func _chaos_low() -> void:
-	pass
+	print("Chaos Low")
 
 
 func _chaos_high() -> void:
-	pass
+	print("Chaos High")
 
 
 func _money_full() -> void:
-	pass
+	print("Money Full")
 
 
 func _money_empty() -> void:
-	pass
+	print("Money Empty")
 
 
 func _money_low() -> void:
-	pass
+	print("Money Low")
 
 
 func _money_high() -> void:
-	pass
+	print("Money High")
 
 
 func _cult_size_full() -> void:
-	pass
+	print("Cult Size Full")
 
 
 func _cult_size_empty() -> void:
-	pass
+	print("Cult Size Empty")
 
 
 func _cult_size_low() -> void:
-	pass
+	print("Cult Size Low")
 
 
 func _cult_size_high() -> void:
-	pass
+	print("Cult Size High")
 
 
 func _reagents_full() -> void:
-	pass
+	print("Reagents Full")
 
 
 func _reagents_empty() -> void:
-	pass
+	print("Reagents Empty")
 
 
 func _reagents_low() -> void:
-	pass
+	print("Reagents Low")
 
 
 func _reagents_high() -> void:
-	pass
+	print("Reagents High")
+
+
+func _handle_resources(id: int) -> void:
+	match id:
+		0:
+			set_influence(get_influence() + 10)
+		1:
+			set_influence(get_influence() - 10)
+		2:
+			set_chaos(get_chaos() + 10)
+		3:
+			set_chaos(get_chaos() - 10)
+		4:
+			set_money(get_money() + 10)
+		5:
+			set_money(get_money() - 10)
+		6:
+			set_cult_size(get_cult_size() + 10)
+		7:
+			set_cult_size(get_cult_size() - 10)
+		8:
+			set_reagents(get_reagents() + 10)
+		9:
+			set_reagents(get_reagents() - 10)
+
+
+# Loads state data from a saved dictionary into the resource variables
+func _handle_load_save(id: int) -> void:
+	var save = save_states.get_popup().get_item_text(id)
+	var save_path = "res://saves/" + save
+	if FileAccess.file_exists(save_path):
+		var save_file = FileAccess.open(save_path, FileAccess.READ)
+		var save_data = save_file.get_var()
+		_influence = save_data.influence
+		_chaos = save_data.chaos
+		_money = save_data.money
+		_cult_size = save_data.cult_size
+		_reagents = save_data.reagents
+		save_file.close()
+
+
+# Saves current state of resource values into a dictionary for loading
+func _on_save_pressed() -> void:
+	var save_data: Dictionary = {
+		"influence": get_influence(),
+		"chaos": get_chaos(),
+		"money": get_money(),
+		"cult_size": get_cult_size(),
+		"reagents": get_reagents()
+	}
+	var save_name = "res://saves/state-" + str(len(_saves)) + ".SAVE"
+	var save_file = FileAccess.open(save_name, FileAccess.WRITE)
+	save_file.store_var(save_data)
+	save_file.close()
+	_set_saves()
+
 #endregion

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://btieu1cno5o6k"]
+[gd_scene load_steps=5 format=3 uid="uid://btieu1cno5o6k"]
 
 [ext_resource type="Script" path="res://source/scenes/throne_room/throne_room.gd" id="1_6h3mq"]
 [ext_resource type="Texture2D" uid="uid://caii4b7t7uk1l" path="res://assets/REPLACE_BEFORE_SUBMISSION/throneroom_placeholder.jpg" id="2_b0ee3"]
 [ext_resource type="PackedScene" uid="uid://7codxq0yg473" path="res://source/scenes/ui/elements/TEMPORARYBACKBUTTON.tscn" id="3_lxolc"]
+[ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="4_77ieo"]
 
 [node name="ThroneRoom" type="Control"]
 layout_mode = 3
@@ -57,21 +58,25 @@ grow_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+fill_mode = 3
 
 [node name="MoneyBar" type="ProgressBar" parent="UI/SecondaryResources"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+fill_mode = 3
 
 [node name="CultSizeBar" type="ProgressBar" parent="UI/SecondaryResources"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+fill_mode = 3
 
 [node name="ReagentsBar" type="ProgressBar" parent="UI/SecondaryResources"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+fill_mode = 3
 
 [node name="TEMPORARYBACKBUTTON" parent="UI" instance=ExtResource("3_lxolc")]
 layout_mode = 1
@@ -85,3 +90,29 @@ offset_top = -68.0
 offset_right = 355.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="ResourceDebugging" type="MenuButton" parent="UI"]
+layout_mode = 0
+offset_right = 177.0
+offset_bottom = 52.0
+theme = ExtResource("4_77ieo")
+text = "Resources"
+
+[node name="SaveStates" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 1115.0
+offset_top = 80.0
+offset_right = 1927.0
+offset_bottom = 250.0
+
+[node name="Save" type="Button" parent="UI/SaveStates"]
+layout_mode = 2
+theme = ExtResource("4_77ieo")
+text = "Save Current State"
+
+[node name="Saves" type="MenuButton" parent="UI/SaveStates"]
+layout_mode = 2
+theme = ExtResource("4_77ieo")
+text = "States"
+
+[connection signal="pressed" from="UI/SaveStates/Save" to="." method="_on_save_pressed"]
