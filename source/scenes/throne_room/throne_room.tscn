@@ -4,21 +4,33 @@
 [ext_resource type="Texture2D" uid="uid://caii4b7t7uk1l" path="res://assets/REPLACE_BEFORE_SUBMISSION/throneroom_placeholder.jpg" id="2_b0ee3"]
 [ext_resource type="PackedScene" uid="uid://7codxq0yg473" path="res://source/scenes/ui/elements/TEMPORARYBACKBUTTON.tscn" id="3_lxolc"]
 
-[node name="ThroneRoom" type="Node2D"]
+[node name="ThroneRoom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_6h3mq")
 
 [node name="PLACEHOLDER BG" type="TextureRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("2_b0ee3")
 
 [node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
@@ -62,8 +74,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 
 [node name="TEMPORARYBACKBUTTON" parent="UI" instance=ExtResource("3_lxolc")]
-layout_mode = 0
-offset_left = 610.0
-offset_top = 988.0
-offset_right = 1320.0
-offset_bottom = 1056.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -355.0
+offset_top = -68.0
+offset_right = 355.0
+grow_horizontal = 2
+grow_vertical = 0
