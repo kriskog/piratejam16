@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://btieu1cno5o6k"]
+[gd_scene load_steps=4 format=3 uid="uid://btieu1cno5o6k"]
 
 [ext_resource type="Script" path="res://source/scenes/throne_room/throne_room.gd" id="1_6h3mq"]
+[ext_resource type="Texture2D" uid="uid://caii4b7t7uk1l" path="res://assets/REPLACE_BEFORE_SUBMISSION/throneroom_placeholder.jpg" id="2_b0ee3"]
+[ext_resource type="PackedScene" uid="uid://7codxq0yg473" path="res://source/scenes/ui/elements/TEMPORARYBACKBUTTON.tscn" id="3_lxolc"]
 
 [node name="ThroneRoom" type="Node2D"]
 script = ExtResource("1_6h3mq")
+
+[node name="PLACEHOLDER BG" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_b0ee3")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -51,3 +60,10 @@ size_flags_vertical = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+
+[node name="Temporarybackbutton" parent="." instance=ExtResource("3_lxolc")]
+offset_left = 672.0
+offset_top = 982.0
+offset_right = 1382.0
+offset_bottom = 1050.0
+text = "BACK TO MAIN MENU"
