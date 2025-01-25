@@ -82,5 +82,19 @@ text = "Resources"
 
 [node name="SaveStates" type="VBoxContainer" parent="UI"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1115.0
+offset_top = 80.0
+offset_right = 1927.0
+offset_bottom = 250.0
+
+[node name="Save" type="Button" parent="UI/SaveStates"]
+layout_mode = 2
+theme = ExtResource("4_77ieo")
+text = "Save Current State"
+
+[node name="Saves" type="MenuButton" parent="UI/SaveStates"]
+layout_mode = 2
+theme = ExtResource("4_77ieo")
+text = "States"
+
+[connection signal="pressed" from="UI/SaveStates/Save" to="." method="_on_save_pressed"]

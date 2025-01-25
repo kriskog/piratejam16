@@ -49,6 +49,9 @@ var _cult_size: int = 0:
 var _reagents: int = 0:
 	get = get_reagents,
 	set = set_reagents
+
+# Saves
+var saves: Array = []
 #endregion
 
 #region Node Variables
@@ -59,12 +62,15 @@ var _reagents: int = 0:
 @onready var cult_bar: ProgressBar = $UI/SecondaryResources/CultSizeBar
 @onready var reagent_bar: ProgressBar = $UI/SecondaryResources/ReagentsBar
 @onready var resource_menu: MenuButton = $UI/ResourceDebugging
+@onready var save_states: MenuButton = $UI/SaveStates/Saves
 #endregion
 
 
 #region Game Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_set_saves()
+	save_states.get_popup().id_pressed.connect(_handle_load_save)
 	resource_menu.get_popup().add_item("Influence Up")
 	resource_menu.get_popup().add_item("Influence Down")
 	resource_menu.get_popup().add_item("Chaos Up")
@@ -100,18 +106,17 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func _handle_resources(id: int) -> void:
-	match id:
-		0: set_influence(get_influence() + 10)
-		1: set_influence(get_influence() - 10)
-		2: set_chaos(get_chaos() + 10)
-		3: set_chaos(get_chaos() - 10)
-		4: set_money(get_money() + 10)
-		5: set_money(get_money() - 10)
-		6: set_cult_size(get_cult_size() + 10)
-		7: set_cult_size(get_cult_size() - 10)
-		8: set_reagents(get_reagents() + 10)
-		9: set_reagents(get_reagents() - 10)
+func _set_saves() -> void:
+	var dir = DirAccess.open("res://saves")
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			saves.append(file_name)
+			file_name = dir.get_next()
+	for save in saves:
+		save_states.get_popup().add_item(save)
+
 #endregion
 
 
@@ -271,4 +276,48 @@ func _reagents_low() -> void:
 
 func _reagents_high() -> void:
 	print("Reagents High")
+
+
+func _handle_resources(id: int) -> void:
+	match id:
+		0: set_influence(get_influence() + 10)
+		1: set_influence(get_influence() - 10)
+		2: set_chaos(get_chaos() + 10)
+		3: set_chaos(get_chaos() - 10)
+		4: set_money(get_money() + 10)
+		5: set_money(get_money() - 10)
+		6: set_cult_size(get_cult_size() + 10)
+		7: set_cult_size(get_cult_size() - 10)
+		8: set_reagents(get_reagents() + 10)
+		9: set_reagents(get_reagents() - 10)
+
+# Loads state data from a saved dictionary into the resource variables
+func _handle_load_save(id: int) -> void:
+	var save = save_states.get_popup().get_item_text(id)
+	var save_path = "res://saves/" + save
+	if FileAccess.file_exists(save_path):
+		var save_file = FileAccess.open(save_path, FileAccess.READ)
+		var save_data = save_file.get_var()
+		_influence = save_data.influence
+		_chaos = save_data.chaos
+		_money = save_data.money
+		_cult_size = save_data.cult_size
+		_reagents = save_data.reagents
+		save_file.close()
+
+# Saves current state of resource values into a dictionary for loading
+func _on_save_pressed() -> void:
+	var save_data: Dictionary = {
+		"influence": get_influence(),
+		"chaos": get_chaos(),
+		"money": get_money(),
+		"cult_size": get_cult_size(),
+		"reagents": get_reagents()
+	}
+	var save_name = "res://saves/state-" + str(len(saves)) + ".SAVE"
+	var save_file = FileAccess.open(save_name, FileAccess.WRITE)
+	save_file.store_var(save_data)
+	save_file.close()
+	_set_saves()
+
 #endregion
