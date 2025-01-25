@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://source/scenes/ui/elements/temporarybackbutton.gd" id="1_6b0dm"]
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_vckxt"]
 
-[node name="Temporarybackbutton" type="Button"]
+[node name="TEMPORARYBACKBUTTON" type="Button"]
 theme = ExtResource("1_vckxt")
-text = "BACK"
+text = "BACK TO MAIN MENU"
 script = ExtResource("1_6b0dm")

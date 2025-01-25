@@ -4,6 +4,6 @@ Assets used:
 	Throneroom placeholder bg
 	Main menu bg
 
-Get rid of temporary assets
+Get rid of temporary elements
 	scenes\ui\elements\TEMPORARYBACKBUTTON.tscn
 	scenes\ui\elements\TEMPORARYBACKBUTTON.gd
