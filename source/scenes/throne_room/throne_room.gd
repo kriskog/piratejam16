@@ -32,7 +32,7 @@ const MAX_REAGENTS: int = 100
 
 #region Private Variables
 # Saves
-var saves: Array = []
+var _saves: Array = []
 
 # Main game resource
 var _influence: int = 0:
@@ -109,14 +109,17 @@ func _process(_delta: float) -> void:
 
 
 func _set_saves() -> void:
+	# Reset saves array to avoid duplicates
+	_saves = []
+	save_states.get_popup().clear()
 	var dir = DirAccess.open("res://saves")
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			saves.append(file_name)
+			_saves.append(file_name)
 			file_name = dir.get_next()
-	for save in saves:
+	for save in _saves:
 		save_states.get_popup().add_item(save)
 
 
@@ -143,17 +146,18 @@ func get_chaos() -> int:
 
 
 func set_chaos(value: int) -> void:
-	var current_chaos = _chaos
+	# Storing previous value to check if the threshold is being met from the right direction
+	var previous_chaos = _chaos
 	_chaos = clamp(value, 0, MAX_CHAOS)
 	if chaos_bar:
 		chaos_bar.value = _chaos
 	if _chaos == MAX_CHAOS:
 		chaos_full.emit()
-	elif current_chaos < (MAX_CHAOS * 0.7) && _chaos >= (MAX_CHAOS * 0.7):
+	elif previous_chaos < (MAX_CHAOS * 0.7) && _chaos >= (MAX_CHAOS * 0.7):
 		chaos_high.emit()
 	elif _chaos == 0:
 		chaos_empty.emit()
-	elif current_chaos > (MAX_CHAOS * 0.3) && _chaos <= (MAX_CHAOS * 0.3):
+	elif previous_chaos > (MAX_CHAOS * 0.3) && _chaos <= (MAX_CHAOS * 0.3):
 		chaos_low.emit()
 
 
@@ -162,17 +166,18 @@ func get_money() -> int:
 
 
 func set_money(value: int) -> void:
-	var current_money = _money
+	# Storing previous value to check if the threshold is being met from the right direction
+	var previous_money = _money
 	_money = clamp(value, 0, MAX_MONEY)
 	if money_bar:
 		money_bar.value = _money
 	if _money == MAX_MONEY:
 		money_full.emit()
-	elif current_money < (MAX_MONEY * 0.7) && _money >= (MAX_MONEY * 0.7):
+	elif previous_money < (MAX_MONEY * 0.7) && _money >= (MAX_MONEY * 0.7):
 		money_high.emit()
 	elif _money == 0:
 		money_empty.emit()
-	elif current_money > (MAX_MONEY * 0.3) && _money <= (MAX_MONEY * 0.3):
+	elif previous_money > (MAX_MONEY * 0.3) && _money <= (MAX_MONEY * 0.3):
 		money_low.emit()
 
 
@@ -181,17 +186,18 @@ func get_cult_size() -> int:
 
 
 func set_cult_size(value: int) -> void:
-	var current_cult_size = _cult_size
+	# Storing previous value to check if the threshold is being met from the right direction
+	var previous_cult_size = _cult_size
 	_cult_size = clamp(value, 0, MAX_CULT_SIZE)
 	if cult_bar:
 		cult_bar.value = _cult_size
 	if _cult_size == MAX_CULT_SIZE:
 		cult_size_full.emit()
-	elif current_cult_size < (MAX_CULT_SIZE * 0.7) && _cult_size >= (MAX_CULT_SIZE * 0.7):
+	elif previous_cult_size < (MAX_CULT_SIZE * 0.7) && _cult_size >= (MAX_CULT_SIZE * 0.7):
 		cult_size_high.emit()
 	elif _cult_size == 0:
 		cult_size_empty.emit()
-	elif current_cult_size > (MAX_CULT_SIZE * 0.3) && _cult_size <= (MAX_CULT_SIZE * 0.3):
+	elif previous_cult_size > (MAX_CULT_SIZE * 0.3) && _cult_size <= (MAX_CULT_SIZE * 0.3):
 		cult_size_low.emit()
 
 
@@ -200,17 +206,18 @@ func get_reagents() -> int:
 
 
 func set_reagents(value: int) -> void:
-	var current_reagents = _reagents
+	# Storing previous value to check if the threshold is being met from the right direction
+	var previous_reagents = _reagents
 	_reagents = clamp(value, 0, MAX_REAGENTS)
 	if reagent_bar:
 		reagent_bar.value = _reagents
 	if _reagents == MAX_REAGENTS:
 		reagents_full.emit()
-	elif current_reagents < (MAX_REAGENTS * 0.7) && _reagents >= (MAX_REAGENTS * 0.7):
+	elif previous_reagents < (MAX_REAGENTS * 0.7) && _reagents >= (MAX_REAGENTS * 0.7):
 		reagents_high.emit()
 	elif _reagents == 0:
 		reagents_empty.emit()
-	elif current_reagents > (MAX_REAGENTS * 0.3) && _reagents <= (MAX_REAGENTS * 0.3):
+	elif previous_reagents > (MAX_REAGENTS * 0.3) && _reagents <= (MAX_REAGENTS * 0.3):
 		reagents_low.emit()
 
 
@@ -338,7 +345,7 @@ func _on_save_pressed() -> void:
 		"cult_size": get_cult_size(),
 		"reagents": get_reagents()
 	}
-	var save_name = "res://saves/state-" + str(len(saves)) + ".SAVE"
+	var save_name = "res://saves/state-" + str(len(_saves)) + ".SAVE"
 	var save_file = FileAccess.open(save_name, FileAccess.WRITE)
 	save_file.store_var(save_data)
 	save_file.close()

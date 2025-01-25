@@ -114,3 +114,5 @@ text = "Save Current State"
 layout_mode = 2
 theme = ExtResource("4_77ieo")
 text = "States"
+
+[connection signal="pressed" from="UI/SaveStates/Save" to="." method="_on_save_pressed"]
