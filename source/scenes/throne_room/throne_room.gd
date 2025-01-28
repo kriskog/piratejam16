@@ -21,6 +21,12 @@ signal reagents_low
 signal reagents_high
 #endregion
 
+#region Enums
+
+enum stat_state {EMPTY, LOW, MID, HIGH, FULL}
+
+#endregion
+
 #region Constants
 # Max constants
 const MAX_INFLUENCE: int = 100
@@ -52,6 +58,20 @@ var _cult_size: int = 0:
 var _reagents: int = 0:
 	get = get_reagents,
 	set = set_reagents
+
+# Resource states
+var _chaos_state: stat_state = stat_state.MID:
+	get = get_chaos_state,
+	set = set_chaos_state
+var _money_state: stat_state = stat_state.MID:
+	get = get_money_state,
+	set = set_money_state
+var _cult_size_state: stat_state = stat_state.MID:
+	get = get_cult_size_state,
+	set = set_cult_size_state
+var _reagents_state: stat_state = stat_state.MID:
+	get = get_reagents_state,
+	set = set_reagents_state
 
 #endregion
 
@@ -220,7 +240,29 @@ func set_reagents(value: int) -> void:
 	elif previous_reagents > (MAX_REAGENTS * 0.3) && _reagents <= (MAX_REAGENTS * 0.3):
 		reagents_low.emit()
 
+func get_chaos_state() -> stat_state:
+	return _chaos_state
 
+func set_chaos_state(value: stat_state) -> void:
+	_chaos_state = value
+
+func get_money_state() -> stat_state:
+	return _money_state
+
+func set_money_state(value: stat_state) -> void:
+	_money_state = value
+
+func get_cult_size_state() -> stat_state:
+	return _cult_size_state
+
+func set_cult_size_state(value: stat_state) -> void:
+	_cult_size_state = value
+
+func get_reagents_state() -> stat_state:
+	return _reagents_state
+
+func set_reagents_state(value: stat_state) -> void:
+	_reagents_state = value
 #endregion
 
 
