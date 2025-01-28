@@ -61,3 +61,19 @@ func test_reagents_max():
 func test_reagents_min():
 	ThroneRoom.set_reagents(-150);
 	assert_eq(ThroneRoom.get_reagents(), 0, "Reagents clamps to 0");
+
+func test_chaos_state():
+	ThroneRoom.set_chaos_state(ThroneRoom.stat_state.HIGH)
+	assert_eq(ThroneRoom.get_chaos_state(), ThroneRoom.stat_state.HIGH, "Chaos state sets to HIGH")
+
+func test_money_state():
+	ThroneRoom.set_money_state(ThroneRoom.stat_state.LOW)
+	assert_eq(ThroneRoom.get_money_state(), ThroneRoom.stat_state.LOW, "Money state sets to LOW")
+
+func test_cult_size_state():
+	ThroneRoom.set_cult_size_state(ThroneRoom.stat_state.FULL)
+	assert_eq(ThroneRoom.get_cult_size_state(), ThroneRoom.stat_state.FULL, "Cult size state sets to FULL")
+
+func test_reagents_state():
+	ThroneRoom.set_reagents_state(ThroneRoom.stat_state.EMPTY)
+	assert_eq(ThroneRoom.get_reagents_state(), ThroneRoom.stat_state.EMPTY, "Reagents state sets to EMPTY")
