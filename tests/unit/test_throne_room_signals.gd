@@ -60,17 +60,15 @@ func test_chaos_high():
 	ThroneRoom.set_chaos(80)
 	assert_signal_emitted(ThroneRoom, "chaos_high")
 
-func test_chaos_low_to_low():
+func test_chaos_mid():
+	var doubled = double(my_script).new()
+	doubled.chaos_mid.connect(doubled._chaos_mid)
+	doubled.chaos_mid.emit()
+	assert_called(doubled, "_chaos_mid")
 	watch_signals(ThroneRoom)
-	ThroneRoom.set_chaos(0)
-	ThroneRoom.set_chaos(20)
-	assert_signal_not_emitted(ThroneRoom, "chaos_low")
-
-func test_chaos_high_to_high():
-	watch_signals(ThroneRoom)
-	ThroneRoom.set_chaos(100)
 	ThroneRoom.set_chaos(80)
-	assert_signal_not_emitted(ThroneRoom, "chaos_high")
+	ThroneRoom.set_chaos(50)
+	assert_signal_emitted(ThroneRoom, "chaos_mid")
 
 func test_money_full():
 	var doubled = double(my_script).new()
@@ -110,17 +108,15 @@ func test_money_high():
 	ThroneRoom.set_money(80)
 	assert_signal_emitted(ThroneRoom, "money_high")
 
-func test_money_low_to_low():
+func test_money_mid():
+	var doubled = double(my_script).new()
+	doubled.money_mid.connect(doubled._money_mid)
+	doubled.money_mid.emit()
+	assert_called(doubled, "_money_mid")
 	watch_signals(ThroneRoom)
-	ThroneRoom.set_money(0)
-	ThroneRoom.set_money(20)
-	assert_signal_not_emitted(ThroneRoom, "money_low")
-
-func test_money_high_to_high():
-	watch_signals(ThroneRoom)
-	ThroneRoom.set_money(100)
 	ThroneRoom.set_money(80)
-	assert_signal_not_emitted(ThroneRoom, "money_high")
+	ThroneRoom.set_money(50)
+	assert_signal_emitted(ThroneRoom, "money_mid")
 
 func test_cult_size_full():
 	var doubled = double(my_script).new()
@@ -160,17 +156,15 @@ func test_cult_size_high():
 	ThroneRoom.set_cult_size(80)
 	assert_signal_emitted(ThroneRoom, "cult_size_high")
 
-func test_cult_size_low_to_low():
+func test_cult_size_mid():
+	var doubled = double(my_script).new()
+	doubled.cult_size_mid.connect(doubled._cult_size_mid)
+	doubled.cult_size_mid.emit()
+	assert_called(doubled, "_cult_size_mid")
 	watch_signals(ThroneRoom)
-	ThroneRoom.set_cult_size(0)
-	ThroneRoom.set_cult_size(20)
-	assert_signal_not_emitted(ThroneRoom, "cult_size_low")
-
-func test_cult_size_high_to_high():
-	watch_signals(ThroneRoom)
-	ThroneRoom.set_cult_size(100)
 	ThroneRoom.set_cult_size(80)
-	assert_signal_not_emitted(ThroneRoom, "cult_size_high")
+	ThroneRoom.set_cult_size(50)
+	assert_signal_emitted(ThroneRoom, "cult_size_mid")
 
 func test_reagents_full():
 	var doubled = double(my_script).new()
@@ -210,14 +204,12 @@ func test_reagents_high():
 	ThroneRoom.set_reagents(80)
 	assert_signal_emitted(ThroneRoom, "reagents_high")
 
-func test_reagents_low_to_low():
+func test_reagents_mid():
+	var doubled = double(my_script).new()
+	doubled.reagents_mid.connect(doubled._reagents_mid)
+	doubled.reagents_mid.emit()
+	assert_called(doubled, "_reagents_mid")
 	watch_signals(ThroneRoom)
-	ThroneRoom.set_reagents(0)
-	ThroneRoom.set_reagents(20)
-	assert_signal_not_emitted(ThroneRoom, "reagents_low")
-
-func test_reagents_high_to_high():
-	watch_signals(ThroneRoom)
-	ThroneRoom.set_reagents(100)
 	ThroneRoom.set_reagents(80)
-	assert_signal_not_emitted(ThroneRoom, "reagents_high")
+	ThroneRoom.set_reagents(50)
+	assert_signal_emitted(ThroneRoom, "reagents_mid")
