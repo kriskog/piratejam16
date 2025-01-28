@@ -172,13 +172,19 @@ func set_chaos(value: int) -> void:
 	if chaos_bar:
 		chaos_bar.value = _chaos
 	if _chaos == MAX_CHAOS:
+		_chaos_state = stat_state.FULL
 		chaos_full.emit()
 	elif previous_chaos < (MAX_CHAOS * 0.7) && _chaos >= (MAX_CHAOS * 0.7):
+		_chaos_state = stat_state.HIGH
 		chaos_high.emit()
 	elif _chaos == 0:
+		_chaos_state = stat_state.EMPTY
 		chaos_empty.emit()
 	elif previous_chaos > (MAX_CHAOS * 0.3) && _chaos <= (MAX_CHAOS * 0.3):
+		_chaos_state = stat_state.LOW
 		chaos_low.emit()
+	else:
+		_chaos_state = stat_state.MID
 
 
 func get_money() -> int:
@@ -192,14 +198,19 @@ func set_money(value: int) -> void:
 	if money_bar:
 		money_bar.value = _money
 	if _money == MAX_MONEY:
+		_money_state = stat_state.FULL
 		money_full.emit()
 	elif previous_money < (MAX_MONEY * 0.7) && _money >= (MAX_MONEY * 0.7):
+		_money_state = stat_state.HIGH
 		money_high.emit()
 	elif _money == 0:
+		_money_state = stat_state.EMPTY
 		money_empty.emit()
 	elif previous_money > (MAX_MONEY * 0.3) && _money <= (MAX_MONEY * 0.3):
+		_money_state = stat_state.LOW
 		money_low.emit()
-
+	else:
+		_money_state = stat_state.MID
 
 func get_cult_size() -> int:
 	return _cult_size
@@ -212,14 +223,19 @@ func set_cult_size(value: int) -> void:
 	if cult_bar:
 		cult_bar.value = _cult_size
 	if _cult_size == MAX_CULT_SIZE:
+		_cult_size_state = stat_state.FULL
 		cult_size_full.emit()
 	elif previous_cult_size < (MAX_CULT_SIZE * 0.7) && _cult_size >= (MAX_CULT_SIZE * 0.7):
+		_cult_size_state = stat_state.HIGH
 		cult_size_high.emit()
 	elif _cult_size == 0:
+		_cult_size_state = stat_state.EMPTY
 		cult_size_empty.emit()
 	elif previous_cult_size > (MAX_CULT_SIZE * 0.3) && _cult_size <= (MAX_CULT_SIZE * 0.3):
+		_cult_size_state = stat_state.LOW
 		cult_size_low.emit()
-
+	else:
+		_cult_size_state = stat_state.MID
 
 func get_reagents() -> int:
 	return _reagents
@@ -232,13 +248,19 @@ func set_reagents(value: int) -> void:
 	if reagent_bar:
 		reagent_bar.value = _reagents
 	if _reagents == MAX_REAGENTS:
+		_reagents_state = stat_state.FULL
 		reagents_full.emit()
 	elif previous_reagents < (MAX_REAGENTS * 0.7) && _reagents >= (MAX_REAGENTS * 0.7):
+		_reagents_state = stat_state.HIGH
 		reagents_high.emit()
 	elif _reagents == 0:
+		_reagents_state = stat_state.EMPTY
 		reagents_empty.emit()
 	elif previous_reagents > (MAX_REAGENTS * 0.3) && _reagents <= (MAX_REAGENTS * 0.3):
+		_reagents_state = stat_state.LOW
 		reagents_low.emit()
+	else:
+		_reagents_state = stat_state.MID
 
 func get_chaos_state() -> stat_state:
 	return _chaos_state
