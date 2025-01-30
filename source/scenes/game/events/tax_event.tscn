@@ -4,15 +4,11 @@
 [ext_resource type="Script" path="res://source/scenes/game/events/tax_event.gd" id="2_w3bcl"]
 
 [node name="TaxEvent" instance=ExtResource("1_was83")]
-anchors_preset = -1
 anchor_left = -0.112
-anchor_top = -0.218
-anchor_right = 0.111
-anchor_bottom = 0.235
+anchor_top = -0.226
 offset_left = 30.04
-offset_top = 18.44
-offset_right = -30.12
-offset_bottom = -163.8
+offset_top = 27.08
+offset_bottom = -157.32
 script = ExtResource("2_w3bcl")
 
 [node name="Text" parent="." index="0"]
@@ -30,8 +26,6 @@ text = "Make him disappear"
 
 [node name="TextureRect2" parent="." index="4"]
 z_index = 0
-layout_mode = 1
-anchors_preset = -1
 anchor_left = -0.107
 anchor_top = -0.123
 anchor_right = -0.107
