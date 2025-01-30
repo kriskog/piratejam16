@@ -92,6 +92,7 @@ var _reagents_state: StatState = StatState.MID:
 @onready var resource_menu: MenuButton = $UI/ResourceDebugging
 @onready var save_states: MenuButton = $UI/SaveStates/Saves
 @onready var event_position: Control = $EventPosition
+@onready var current_event: Control
 #endregion
 
 
@@ -104,8 +105,10 @@ func _ready() -> void:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			_events.append(file_name)
+			_events.append("res://source/scenes/game/events/" + file_name)
 			file_name = dir.get_next()
+	_events = _events.filter(func(event): return event.contains(".tscn"))
+	_events = _events.filter(func(event): return event != "res://source/scenes/game/events/event.tscn")
 	influence_bar.value = get_influence()
 	chaos_bar.value = get_chaos()
 	money_bar.value = get_money()
@@ -146,10 +149,13 @@ func _ready() -> void:
 	reagents_high.connect(_reagents_high)
 	reagents_mid.connect(_reagents_mid)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if !current_event:
+		var new_event = _events.pick_random()
+		current_event = load(new_event).instantiate()
+		current_event.position = event_position.position
+		add_child(current_event)
 
 
 func _set_saves() -> void:
