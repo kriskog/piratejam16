@@ -225,7 +225,6 @@ func set_influence(value: int) -> void:
 				modifier -= 0.15
 	difference *= modifier
 	_influence = clamp(_influence + difference, 0, MAX_INFLUENCE)
-	print(_influence)
 	if influence_bar:
 		influence_bar.value = _influence
 	if _influence == MAX_INFLUENCE:
