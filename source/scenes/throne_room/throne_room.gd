@@ -92,6 +92,7 @@ var _reagents_state: StatState = StatState.MID:
 @onready var resource_menu: MenuButton = $UI/ResourceDebugging
 @onready var save_states: MenuButton = $UI/SaveStates/Saves
 @onready var event_position: Control = $EventPosition
+@onready var influence_timer: Timer = $InfluenceTimer
 @onready var current_event: Control
 #endregion
 
@@ -108,7 +109,9 @@ func _ready() -> void:
 			_events.append("res://source/scenes/game/events/" + file_name)
 			file_name = dir.get_next()
 	_events = _events.filter(func(event): return event.contains(".tscn"))
-	_events = _events.filter(func(event): return event != "res://source/scenes/game/events/event.tscn")
+	_events = _events.filter(
+		func(event): return event != "res://source/scenes/game/events/event.tscn"
+	)
 	influence_bar.value = get_influence()
 	chaos_bar.value = get_chaos()
 	money_bar.value = get_money()
@@ -149,6 +152,7 @@ func _ready() -> void:
 	reagents_high.connect(_reagents_high)
 	reagents_mid.connect(_reagents_mid)
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if !current_event:
@@ -156,6 +160,8 @@ func _process(_delta: float) -> void:
 		current_event = load(new_event).instantiate()
 		current_event.position = event_position.position
 		add_child(current_event)
+	if current_event && influence_timer.is_stopped() && _influence > 0:
+		influence_timer.start()
 
 
 func _set_saves() -> void:
@@ -215,6 +221,7 @@ func set_influence(value: int) -> void:
 				modifier -= 0.15
 	difference *= modifier
 	_influence = clamp(_influence + difference, 0, MAX_INFLUENCE)
+	print(_influence)
 	if influence_bar:
 		influence_bar.value = _influence
 	if _influence == MAX_INFLUENCE:
@@ -401,11 +408,11 @@ func set_reagents_state(value: StatState) -> void:
 
 #region Signal Functions
 func _influence_win() -> void:
-	print("Influence Max")
+	get_tree().change_scene_to_file("res://source/scenes/game/end_screens/win_screen.tscn")
 
 
 func _influence_loss() -> void:
-	print("Influence Empty")
+	get_tree().change_scene_to_file("res://source/scenes/game/end_screens/lose_screen.tscn")
 
 
 func _chaos_full() -> void:
@@ -542,8 +549,9 @@ func _on_save_pressed() -> void:
 	save_file.close()
 	_set_saves()
 
+
 #endregion
 
 
 func _on_influence_timer_timeout() -> void:
-	pass # Replace with function body.
+	set_influence(get_influence() - 2)
