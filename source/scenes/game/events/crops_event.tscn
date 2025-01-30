@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7xs3bc2ld0ws"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_0u2fm"]
+[ext_resource type="Script" path="res://source/scenes/game/events/crops_event.gd" id="2_3hyhl"]
+
+[node name="Crops_Event" instance=ExtResource("1_0u2fm")]
+script = ExtResource("2_3hyhl")
+
+[node name="Text" parent="." index="0"]
+text = "A terrible blight threatens our crops. What shall we do?"
+
+[node name="Option1" parent="." index="1"]
+text = "Burn the fields."
+
+[node name="Option2" parent="." index="2"]
+text = "Pray for salvation."
+
+[node name="TextureRect2" parent="." index="4"]
+layout_mode = 0

@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhe8wcmk51kc1"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_was83"]
+[ext_resource type="Script" path="res://source/scenes/game/events/tax_event.gd" id="2_w3bcl"]
+
+[node name="TaxEvent" instance=ExtResource("1_was83")]
+anchors_preset = -1
+anchor_left = -0.112
+anchor_top = -0.218
+anchor_right = 0.111
+anchor_bottom = 0.235
+offset_left = 30.04
+offset_top = 18.44
+offset_right = -30.12
+offset_bottom = -163.8
+script = ExtResource("2_w3bcl")
+
+[node name="Text" parent="." index="0"]
+text = "The tax collector demands coin. Should we comply?"
+
+[node name="Option1" parent="." index="1"]
+offset_left = 14.0
+offset_top = 202.0
+offset_right = 366.0
+offset_bottom = 300.0
+text = "Pay him begrudgingly"
+
+[node name="Option2" parent="." index="2"]
+text = "Make him disappear"
+
+[node name="TextureRect2" parent="." index="4"]
+z_index = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.107
+anchor_top = -0.123
+anchor_right = -0.107
+anchor_bottom = -0.123
+offset_left = 8.483
+offset_top = 8.9
+offset_right = 440.483
+offset_bottom = 502.9
+
+[connection signal="button_up" from="Option1" to="." method="_on_option_1_button_up"]

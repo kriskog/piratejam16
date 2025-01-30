@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://hucyky4oa8le"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_ngba7"]
+[ext_resource type="Script" path="res://source/scenes/game/events/festival_event.gd" id="2_chyxs"]
+
+[node name="Festival_Event" instance=ExtResource("1_ngba7")]
+script = ExtResource("2_chyxs")
+
+[node name="Text" parent="." index="0"]
+text = "Shall we host a festival to inspire the people?"
+
+[node name="Option1" parent="." index="1"]
+text = "Light the flames of faith!"
+
+[node name="Option2" parent="." index="2"]
+text = "Now is not the time"
+
+[node name="TextureRect2" parent="." index="4"]
+layout_mode = 0

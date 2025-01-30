@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://btieu1cno5o6k"]
+[gd_scene load_steps=6 format=3 uid="uid://btieu1cno5o6k"]
 
 [ext_resource type="Script" path="res://source/scenes/throne_room/throne_room.gd" id="1_6h3mq"]
 [ext_resource type="Texture2D" uid="uid://caii4b7t7uk1l" path="res://assets/REPLACE_BEFORE_SUBMISSION/throneroom_placeholder.jpg" id="2_b0ee3"]
 [ext_resource type="PackedScene" uid="uid://7codxq0yg473" path="res://source/scenes/ui/elements/TEMPORARYBACKBUTTON.tscn" id="3_lxolc"]
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="4_77ieo"]
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="5_efy7i"]
 
 [node name="ThroneRoom" type="Control"]
 layout_mode = 3
@@ -114,5 +115,11 @@ text = "Save Current State"
 layout_mode = 2
 theme = ExtResource("4_77ieo")
 text = "States"
+
+[node name="Event" parent="." instance=ExtResource("5_efy7i")]
+offset_left = 774.0
+offset_top = 368.0
+offset_right = 1143.0
+offset_bottom = 688.0
 
 [connection signal="pressed" from="UI/SaveStates/Save" to="." method="_on_save_pressed"]

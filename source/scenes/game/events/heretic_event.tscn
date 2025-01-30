@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://05wn8lcflgjv"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_hlx65"]
+[ext_resource type="Script" path="res://source/scenes/game/events/heretic_event.gd" id="2_jmkkm"]
+
+[node name="Heretic_Event" instance=ExtResource("1_hlx65")]
+script = ExtResource("2_jmkkm")
+
+[node name="Text" parent="." index="0"]
+text = "A heretic spreads doubt among the faithful. Shall we silence him?"
+
+[node name="Option1" parent="." index="1"]
+text = "Expose him as false!"
+
+[node name="Option2" parent="." index="2"]
+text = "Leave him for now"
+
+[node name="TextureRect2" parent="." index="4"]
+layout_mode = 0

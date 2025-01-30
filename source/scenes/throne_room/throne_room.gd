@@ -107,7 +107,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-
 func _set_saves() -> void:
 	# Reset saves array to avoid duplicates
 	_saves = []

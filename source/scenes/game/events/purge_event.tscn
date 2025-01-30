@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://btud35ug2uqej"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_0pe74"]
+[ext_resource type="Script" path="res://source/scenes/game/events/purge_event.gd" id="2_h7k7l"]
+
+[node name="Purge_Event" instance=ExtResource("1_0pe74")]
+script = ExtResource("2_h7k7l")
+
+[node name="Text" parent="." index="0"]
+text = "The weak among us slow our cause. What shall be done?"
+
+[node name="Option1" parent="." index="1"]
+text = "Cleanse them in fire"
+
+[node name="Option2" parent="." index="2"]
+text = "Cast them to the wolves"
+
+[node name="TextureRect2" parent="." index="4"]
+layout_mode = 0

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://84bvg7ddpea4"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_71kch"]
+[ext_resource type="Script" path="res://source/scenes/game/events/snackarafice_event.gd" id="2_as7gf"]
+
+[node name="Snackarafice_Event" instance=ExtResource("1_71kch")]
+script = ExtResource("2_as7gf")
+
+[node name="Text" parent="." index="0"]
+text = "The altar grows cold. Shall we sacrifice a villager?"
+
+[node name="Option1" parent="." index="1"]
+text = "Take the unfaithful"
+
+[node name="Option2" parent="." index="2"]
+text = "No we bide our time"
+
+[node name="TextureRect2" parent="." index="4"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 433.0
+offset_bottom = 489.0
