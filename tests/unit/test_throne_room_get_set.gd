@@ -27,8 +27,8 @@ func test_chaos_min():
 	assert_eq(ThroneRoom.get_chaos(), 0, "Chaos clamps to 0");
 
 func test_set_get_money_value():
-	ThroneRoom.set_money(11);
-	assert_eq(ThroneRoom.get_money(), 11, "Money is being set to 11");
+	ThroneRoom.set_money(40);
+	assert_eq(ThroneRoom.get_money(), 39, "Money is being set to 39");
 
 func test_money_max():
 	ThroneRoom.set_money(150);

@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnb0pjry7ghx1"]
+
+[ext_resource type="Script" path="res://source/scenes/game/end_screens/win_screen.gd" id="1_vwuvw"]
+[ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="2_c38yv"]
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vwuvw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -239.0
+offset_right = 232.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_c38yv")
+bbcode_enabled = true
+text = "[center]You have gained the influence required to be freed. Many cower in fear as you show off your previously lost power and destroy the realm.[/center]"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -355.0
+offset_top = -68.0
+offset_right = 355.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_c38yv")
+text = "Back to main menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

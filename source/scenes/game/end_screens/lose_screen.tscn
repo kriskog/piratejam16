@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://ytwxkd4co1gm"]
+
+[ext_resource type="Script" path="res://source/scenes/game/end_screens/lose_screen.gd" id="1_4vr07"]
+[ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_51x31"]
+
+[node name="LoseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4vr07")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.5
+offset_top = -144.5
+offset_right = 231.5
+offset_bottom = 144.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_51x31")
+bbcode_enabled = true
+text = "[center]You have run out of influence and your cult has disbanded. You will slumber for uncountable years until someone else tries to awaken you[/center]"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -355.0
+offset_top = -68.0
+offset_right = 355.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_51x31")
+text = "Back to main menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -44,22 +44,26 @@ const MAX_REAGENTS: int = 100
 # Saves
 var _saves: Array = []
 
+# Events
+var _events: Array = []
+var _prev_event: String = ""
+
 # Main game resource
 var _influence: int = 0:
 	get = get_influence,
 	set = set_influence
 
 # Secondary resources
-var _chaos: int = 0:
+var _chaos: int = 50:
 	get = get_chaos,
 	set = set_chaos
-var _money: int = 0:
+var _money: int = 50:
 	get = get_money,
 	set = set_money
-var _cult_size: int = 0:
+var _cult_size: int = 50:
 	get = get_cult_size,
 	set = set_cult_size
-var _reagents: int = 0:
+var _reagents: int = 50:
 	get = get_reagents,
 	set = set_reagents
 
@@ -82,12 +86,15 @@ var _reagents_state: StatState = StatState.MID:
 #region Node Variables
 # Progress bars as variables
 @onready var influence_bar: ProgressBar = $UI/InfluenceBar
-@onready var chaos_bar: ProgressBar = $UI/SecondaryResources/ChaosBar
-@onready var money_bar: ProgressBar = $UI/SecondaryResources/MoneyBar
-@onready var cult_bar: ProgressBar = $UI/SecondaryResources/CultSizeBar
-@onready var reagent_bar: ProgressBar = $UI/SecondaryResources/ReagentsBar
+@onready var chaos_bar: ProgressBar = $UI/VBoxContainer/SecondaryResources/ChaosBar
+@onready var money_bar: ProgressBar = $UI/VBoxContainer/SecondaryResources/MoneyBar
+@onready var cult_bar: ProgressBar = $UI/VBoxContainer/SecondaryResources/CultSizeBar
+@onready var reagent_bar: ProgressBar = $UI/VBoxContainer/SecondaryResources/ReagentsBar
 @onready var resource_menu: MenuButton = $UI/ResourceDebugging
 @onready var save_states: MenuButton = $UI/SaveStates/Saves
+@onready var event_position: Control = $EventPosition
+@onready var influence_timer: Timer = $InfluenceTimer
+@onready var current_event: Control
 #endregion
 
 
@@ -95,6 +102,22 @@ var _reagents_state: StatState = StatState.MID:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_set_saves()
+	var dir = DirAccess.open("res://source/scenes/game/events")
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			_events.append("res://source/scenes/game/events/" + file_name)
+			file_name = dir.get_next()
+	_events = _events.filter(func(event): return event.contains(".tscn"))
+	_events = _events.filter(
+		func(event): return event != "res://source/scenes/game/events/event.tscn"
+	)
+	influence_bar.value = get_influence()
+	chaos_bar.value = get_chaos()
+	money_bar.value = get_money()
+	cult_bar.value = get_cult_size()
+	reagent_bar.value = get_reagents()
 	save_states.get_popup().id_pressed.connect(_handle_load_save)
 	resource_menu.get_popup().add_item("Influence Up")
 	resource_menu.get_popup().add_item("Influence Down")
@@ -133,7 +156,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if !current_event:
+		var new_event = _events.pick_random()
+		while new_event == _prev_event:
+			new_event = _events.pick_random()
+		_prev_event = new_event
+		current_event = load(new_event).instantiate()
+		current_event.position = event_position.position
+		add_child(current_event)
+	if current_event && influence_timer.is_stopped() && _influence > 0:
+		influence_timer.start()
 
 
 func _set_saves() -> void:
@@ -160,7 +192,39 @@ func get_influence() -> int:
 
 
 func set_influence(value: int) -> void:
-	_influence = clamp(value, 0, MAX_INFLUENCE)
+	var modifier: float = 1
+	var difference: float = value - _influence
+	if difference < 0:
+		match _cult_size_state:
+			StatState.EMPTY:
+				modifier += 0.25
+			StatState.LOW:
+				modifier += 0.1
+			StatState.HIGH || StatState.FULL:
+				modifier -= 0.5
+		match _money_state:
+			StatState.EMPTY:
+				modifier += 0.5
+			StatState.LOW:
+				modifier += 0.25
+			StatState.HIGH || StatState.FULL:
+				modifier -= 0.25
+		match _chaos_state:
+			StatState.EMPTY:
+				modifier += 0.25
+			StatState.LOW:
+				modifier += 0.15
+			StatState.HIGH || StatState.FULL:
+				modifier -= 0.5
+		match _reagents_state:
+			StatState.EMPTY:
+				modifier += 0.10
+			StatState.LOW:
+				modifier += 0.05
+			StatState.HIGH || StatState.FULL:
+				modifier -= 0.15
+	difference *= modifier
+	_influence = clamp(_influence + difference, 0, MAX_INFLUENCE)
 	if influence_bar:
 		influence_bar.value = _influence
 	if _influence == MAX_INFLUENCE:
@@ -174,7 +238,19 @@ func get_chaos() -> int:
 
 
 func set_chaos(value: int) -> void:
-	_chaos = clamp(value, 0, MAX_CHAOS)
+	var modifier: float = 1
+	var difference: float = value - _chaos
+	if difference > 0:
+		match _money_state:
+			StatState.EMPTY:
+				modifier -= 0.05
+			StatState.HIGH || StatState.FULL:
+				modifier += 0.05
+		match _reagents_state:
+			StatState.EMPTY:
+				modifier += 0.05
+	difference *= modifier
+	_chaos = clamp(_chaos + difference, 0, MAX_CHAOS)
 	if chaos_bar:
 		chaos_bar.value = _chaos
 	if _chaos == MAX_CHAOS && _chaos_state != StatState.FULL:
@@ -199,7 +275,24 @@ func get_money() -> int:
 
 
 func set_money(value: int) -> void:
-	_money = clamp(value, 0, MAX_MONEY)
+	var modifier: float = 1
+	var difference: float = value - _money
+	if difference > 0:
+		match _reagents_state:
+			StatState.HIGH || StatState.FULL:
+				modifier -= 0.05
+	elif difference < 0:
+		match _cult_size_state:
+			StatState.EMPTY:
+				modifier = 0
+			StatState.LOW:
+				modifier += 0.02
+			StatState.MID:
+				modifier += 0.05
+			StatState.HIGH || StatState.FULL:
+				modifier += 0.1
+	difference *= modifier
+	_money = clamp(_money + difference, 0, MAX_MONEY)
 	if money_bar:
 		money_bar.value = _money
 	if _money == MAX_MONEY && _money_state != StatState.FULL:
@@ -224,7 +317,19 @@ func get_cult_size() -> int:
 
 
 func set_cult_size(value: int) -> void:
-	_cult_size = clamp(value, 0, MAX_CULT_SIZE)
+	var modifier: float = 1
+	var difference: float = value - _cult_size
+	if difference > 0:
+		match _money_state:
+			StatState.EMPTY:
+				modifier -= 0.05
+		match _chaos_state:
+			StatState.EMPTY:
+				modifier -= 0.05
+			StatState.HIGH || StatState.FULL:
+				modifier += 0.05
+	difference *= modifier
+	_cult_size = clamp(_cult_size + difference, 0, MAX_CULT_SIZE)
 	if cult_bar:
 		cult_bar.value = _cult_size
 	if _cult_size == MAX_CULT_SIZE && _cult_size_state != StatState.FULL:
@@ -306,11 +411,11 @@ func set_reagents_state(value: StatState) -> void:
 
 #region Signal Functions
 func _influence_win() -> void:
-	print("Influence Max")
+	get_tree().change_scene_to_file("res://source/scenes/game/end_screens/win_screen.tscn")
 
 
 func _influence_loss() -> void:
-	print("Influence Empty")
+	get_tree().change_scene_to_file("res://source/scenes/game/end_screens/lose_screen.tscn")
 
 
 func _chaos_full() -> void:
@@ -447,4 +552,9 @@ func _on_save_pressed() -> void:
 	save_file.close()
 	_set_saves()
 
+
 #endregion
+
+
+func _on_influence_timer_timeout() -> void:
+	set_influence(get_influence() - 2)
