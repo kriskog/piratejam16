@@ -96,6 +96,7 @@ var _reagents_state: StatState = StatState.MID:
 @onready var influence_timer: Timer = $InfluenceTimer
 @onready var current_event: Control
 @onready var sound: AudioStreamPlayer = $pops
+@onready var click: AudioStreamPlayer = $Click
 
 #endregion
 
@@ -103,6 +104,7 @@ var _reagents_state: StatState = StatState.MID:
 #region Game Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	click.play()
 	_set_saves()
 	var dir = DirAccess.open("res://source/scenes/game/events")
 	if dir:

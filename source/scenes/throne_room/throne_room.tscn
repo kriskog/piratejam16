@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://btieu1cno5o6k"]
+[gd_scene load_steps=12 format=3 uid="uid://btieu1cno5o6k"]
 
 [ext_resource type="Script" path="res://source/scenes/throne_room/throne_room.gd" id="1_6h3mq"]
 [ext_resource type="Texture2D" uid="uid://caii4b7t7uk1l" path="res://assets/REPLACE_BEFORE_SUBMISSION/throneroom_placeholder.jpg" id="2_b0ee3"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bpnuj6mp0aoq3" path="res://assets/sounds/02-Audio 2.wav" id="6_q4sre"]
 [ext_resource type="AudioStream" uid="uid://b6oyg260yehqr" path="res://assets/sounds/03-Audio 3.wav" id="7_ijrbg"]
 [ext_resource type="AudioStream" uid="uid://dtv2ykdp6xvxc" path="res://assets/sounds/04-Audio 4.wav" id="8_7e1yd"]
+[ext_resource type="AudioStream" uid="uid://ovmpjbrynvci" path="res://assets/sounds/click.wav" id="9_4uai5"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7n2rf"]
 random_pitch = 1.98
@@ -17,6 +18,10 @@ stream_0/stream = ExtResource("5_qxxja")
 stream_1/stream = ExtResource("6_q4sre")
 stream_2/stream = ExtResource("7_ijrbg")
 stream_3/stream = ExtResource("8_7e1yd")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yc0a2"]
+streams_count = 1
+stream_0/stream = ExtResource("9_4uai5")
 
 [node name="ThroneRoom" type="Control"]
 layout_mode = 3
@@ -199,6 +204,10 @@ grow_vertical = 2
 
 [node name="pops" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_7n2rf")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_yc0a2")
+pitch_scale = 1.22
 
 [connection signal="pressed" from="UI/SaveStates/Save" to="." method="_on_save_pressed"]
 [connection signal="timeout" from="InfluenceTimer" to="." method="_on_influence_timer_timeout"]
