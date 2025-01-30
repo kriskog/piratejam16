@@ -117,9 +117,10 @@ theme = ExtResource("4_77ieo")
 text = "States"
 
 [node name="Event" parent="." instance=ExtResource("5_efy7i")]
-offset_left = 774.0
-offset_top = 368.0
-offset_right = 1143.0
-offset_bottom = 688.0
+layout_mode = 1
+offset_left = 1000.2
+offset_top = 628.28
+offset_right = 960.56
+offset_bottom = 595.24
 
 [connection signal="pressed" from="UI/SaveStates/Save" to="." method="_on_save_pressed"]
