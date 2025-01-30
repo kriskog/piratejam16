@@ -204,7 +204,7 @@ func set_influence(value: int) -> void:
 				modifier -= 0.5
 		match _money_state:
 			StatState.EMPTY:
-				modifier += 0
+				modifier += 0.5
 			StatState.LOW:
 				modifier += 0.25
 			StatState.HIGH || StatState.FULL:
