@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3wg30dnycelf"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_strdv"]
+[ext_resource type="Script" path="res://source/scenes/game/events/feast_or_famine_event.gd" id="2_g48ig"]
+
+[node name="Feast_or_famine_event" instance=ExtResource("1_strdv")]
+script = ExtResource("2_g48ig")
+
+[node name="Text" parent="." index="0"]
+text = "Our coffers are empty. Shall we take from the closest village?"
+
+[node name="Option1" parent="." index="1"]
+text = "Take what we must"
+
+[node name="Option2" parent="." index="2"]
+text = "Fast and pray"
+
+[node name="TextureRect2" parent="." index="4"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 433.0
+offset_bottom = 489.0

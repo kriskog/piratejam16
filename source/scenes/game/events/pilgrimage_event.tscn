@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0eaorvvxnpdj"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_xja56"]
+[ext_resource type="Script" path="res://source/scenes/game/events/pilgrimage_event.gd" id="2_hch85"]
+
+[node name="Pilgrimage_Event" instance=ExtResource("1_xja56")]
+script = ExtResource("2_hch85")
+
+[node name="Text" parent="." index="0"]
+text = "Some wish to leave on a holy pilgrimage. Shall we allow it?"
+
+[node name="Option1" parent="." index="1"]
+text = "Bless their journey"
+
+[node name="Option2" parent="." index="2"]
+text = "Keep them close"
+
+[node name="TextureRect2" parent="." index="4"]
+layout_mode = 0

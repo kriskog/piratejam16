@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpf8j3i56u8ho"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_dpy8w"]
+[ext_resource type="Script" path="res://source/scenes/game/events/noble_event.gd" id="2_x2sro"]
+
+[node name="Noble_Event" instance=ExtResource("1_dpy8w")]
+script = ExtResource("2_x2sro")
+
+[node name="Text" parent="." index="0"]
+text = "A wealthy noble offers their support. How shall we use it?"
+
+[node name="Option1" parent="." index="1"]
+text = "Recruit more followers"
+
+[node name="Option2" parent="." index="2"]
+text = "Invest in the treasury"
+
+[node name="TextureRect2" parent="." index="4"]
+layout_mode = 0

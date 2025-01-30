@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxqibs6dxs3c4"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_sge4g"]
+[ext_resource type="Script" path="res://source/scenes/game/events/cache_event.gd" id="2_0honq"]
+
+[node name="Cache_Event" instance=ExtResource("1_sge4g")]
+script = ExtResource("2_0honq")
+
+[node name="Text" parent="." index="0"]
+text = "Our scouts uncovered a hidden cache of gold and relics."
+
+[node name="Option1" parent="." index="1"]
+text = "Use it to grow the flock"
+
+[node name="Option2" parent="." index="2"]
+text = "Devote it to dark rituals"
+
+[node name="TextureRect2" parent="." index="4"]
+layout_mode = 0

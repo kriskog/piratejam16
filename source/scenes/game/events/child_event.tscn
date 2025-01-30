@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://btfqic16w4lyr"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_3cfl5"]
+[ext_resource type="Script" path="res://source/scenes/game/events/child_event.gd" id="2_4sh02"]
+
+[node name="Child_Event" instance=ExtResource("1_3cfl5")]
+script = ExtResource("2_4sh02")
+
+[node name="Text" parent="." index="0"]
+text = "A child is born under a dark omen. What fate shall they meet"
+
+[node name="Option1" parent="." index="1"]
+text = "Sackrifice them to the gods"
+
+[node name="Option2" parent="." index="2"]
+text = "Raise them as our champion"
+
+[node name="TextureRect2" parent="." index="4"]
+layout_mode = 0

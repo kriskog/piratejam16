@@ -1,20 +1,95 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpe40lw5n8whj"]
+[gd_scene load_steps=8 format=3 uid="uid://dpe40lw5n8whj"]
 
-[ext_resource type="Script" path="res://event.gd" id="1_ib6vq"]
+[ext_resource type="Script" path="res://source/scenes/game/events/event.gd" id="1_x7wxp"]
+[ext_resource type="FontFile" uid="uid://7q7ivtv8ldr6" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_6we37"]
 
-[node name="Event" type="Node2D"]
-script = ExtResource("1_ib6vq")
+[sub_resource type="LabelSettings" id="LabelSettings_g4g2y"]
+font = ExtResource("2_6we37")
+font_color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[sub_resource type="Gradient" id="Gradient_v3hoc"]
+offsets = PackedFloat32Array(0, 0.532468)
+colors = PackedColorArray(0.737753, 0.842841, 0.847839, 1, 0.737753, 0.842841, 0.847839, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lg44m"]
+gradient = SubResource("Gradient_v3hoc")
+fill_from = Vector2(0.33945, 0.963303)
+fill_to = Vector2(0.541284, 0.0275229)
+
+[sub_resource type="Gradient" id="Gradient_6tnb1"]
+colors = PackedColorArray(0.532955, 0.67852, 0.68588, 1, 0.532955, 0.67852, 0.68588, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sb18l"]
+gradient = SubResource("Gradient_6tnb1")
+
+[node name="Event" type="Control"]
+z_index = 5
+layout_mode = 3
+anchor_left = -0.11
+anchor_top = -0.216
+offset_left = 25.2
+offset_top = 23.28
+offset_right = 183.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x7wxp")
 
 [node name="Text" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+z_index = 6
+layout_mode = 2
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 365.0
+offset_bottom = 193.0
+text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i"
+label_settings = SubResource("LabelSettings_g4g2y")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="Yes" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Option1" type="Button" parent="."]
+z_index = 5
+layout_mode = 2
+offset_left = 13.0
+offset_top = 197.0
+offset_right = 365.0
+offset_bottom = 295.0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt u"
+autowrap_mode = 3
 
-[node name="No" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Option2" type="Button" parent="."]
+z_index = 5
+layout_mode = 2
+offset_left = 14.0
+offset_top = 326.0
+offset_right = 367.0
+offset_bottom = 413.0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt u"
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 2
+offset_left = -20.0
+offset_top = -17.0
+offset_right = 392.0
+offset_bottom = 451.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_lg44m")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = -30.0
+offset_top = -27.0
+offset_right = 403.0
+offset_bottom = 462.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_sb18l")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Option1" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Option2" to="." method="_on_no_pressed"]
