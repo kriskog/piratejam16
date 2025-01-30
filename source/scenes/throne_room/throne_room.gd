@@ -175,6 +175,12 @@ func _process(_delta: float) -> void:
 	if current_event && influence_timer.is_stopped() && _influence > 0:
 		influence_timer.start()
 
+	if Input.is_action_just_pressed("toggle_pause"):
+		if %PauseMenu.visible:
+			%PauseMenu.hide()
+		else:
+			%PauseMenu.show()
+
 
 func _set_saves() -> void:
 	# Reset saves array to avoid duplicates

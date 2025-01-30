@@ -1,13 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4dnm8piv8tvd"]
+[gd_scene load_steps=4 format=3 uid="uid://b4dnm8piv8tvd"]
 
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_6eapn"]
 [ext_resource type="Script" path="res://source/scenes/ui/menus/main_menu.gd" id="1_76osk"]
 [ext_resource type="Texture2D" uid="uid://s088nfy73lyf" path="res://assets/REPLACE_BEFORE_SUBMISSION/mainmenu_placeholder.jpg" id="3_xwug0"]
-[ext_resource type="AudioStream" uid="uid://ovmpjbrynvci" path="res://assets/sounds/click.wav" id="4_mgesy"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lh026"]
-streams_count = 1
-stream_0/stream = ExtResource("4_mgesy")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -115,7 +110,3 @@ focus_next = NodePath("../StartGameButton")
 focus_previous = NodePath("../CreditsButton")
 text = "Exit Game"
 flat = true
-
-[node name="Click" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_lh026")
-pitch_scale = 1.22
