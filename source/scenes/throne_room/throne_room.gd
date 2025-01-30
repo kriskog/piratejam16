@@ -44,22 +44,25 @@ const MAX_REAGENTS: int = 100
 # Saves
 var _saves: Array = []
 
+# Events
+var _events: Array = []
+
 # Main game resource
 var _influence: int = 0:
 	get = get_influence,
 	set = set_influence
 
 # Secondary resources
-var _chaos: int = 0:
+var _chaos: int = 50:
 	get = get_chaos,
 	set = set_chaos
-var _money: int = 0:
+var _money: int = 50:
 	get = get_money,
 	set = set_money
-var _cult_size: int = 0:
+var _cult_size: int = 50:
 	get = get_cult_size,
 	set = set_cult_size
-var _reagents: int = 0:
+var _reagents: int = 50:
 	get = get_reagents,
 	set = set_reagents
 
@@ -95,6 +98,18 @@ var _reagents_state: StatState = StatState.MID:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_set_saves()
+	var dir = DirAccess.open("res://source/scenes/game/events")
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			_events.append(file_name)
+			file_name = dir.get_next()
+	influence_bar.value = get_influence()
+	chaos_bar.value = get_chaos()
+	money_bar.value = get_money()
+	cult_bar.value = get_cult_size()
+	reagent_bar.value = get_reagents()
 	save_states.get_popup().id_pressed.connect(_handle_load_save)
 	resource_menu.get_popup().add_item("Influence Up")
 	resource_menu.get_popup().add_item("Influence Down")
@@ -160,7 +175,41 @@ func get_influence() -> int:
 
 
 func set_influence(value: int) -> void:
-	_influence = clamp(value, 0, MAX_INFLUENCE)
+	var modifier: float = 1
+	var difference: float = value - _influence
+	if difference < 0:
+		match _cult_size_state:
+			StatState.EMPTY:
+				modifier += 0.25
+			StatState.LOW:
+				modifier += 0.1
+			StatState.HIGH || StatState.FULL:
+				modifier -= 0.5
+		match _money_state:
+			StatState.EMPTY:
+				modifier += 0
+			StatState.LOW:
+				modifier += 0.25
+			StatState.HIGH || StatState.FULL:
+				modifier -= 0.25
+		match _chaos_state:
+			StatState.EMPTY:
+				modifier += 0.25
+			StatState.LOW:
+				modifier += 0.15
+			StatState.HIGH || StatState.FULL:
+				modifier -= 0.5
+		match _reagents_state:
+			StatState.EMPTY:
+				modifier += 0.10
+			StatState.LOW:
+				modifier += 0.05
+			StatState.HIGH || StatState.FULL:
+				modifier -= 0.15
+	difference *= modifier
+	print(modifier)
+	print(difference)
+	_influence = clamp(_influence + difference, 0, MAX_INFLUENCE)
 	if influence_bar:
 		influence_bar.value = _influence
 	if _influence == MAX_INFLUENCE:
@@ -174,7 +223,21 @@ func get_chaos() -> int:
 
 
 func set_chaos(value: int) -> void:
-	_chaos = clamp(value, 0, MAX_CHAOS)
+	var modifier: float = 1
+	var difference: float = value - _chaos
+	if difference > 0:
+		match _money_state:
+			StatState.EMPTY:
+				modifier -= 0.05
+			StatState.HIGH || StatState.FULL:
+				modifier += 0.05
+		match _reagents_state:
+			StatState.EMPTY:
+				modifier += 0.05
+	difference *= modifier
+	print(modifier)
+	print(difference)
+	_chaos = clamp(_chaos + difference, 0, MAX_CHAOS)
 	if chaos_bar:
 		chaos_bar.value = _chaos
 	if _chaos == MAX_CHAOS && _chaos_state != StatState.FULL:
@@ -199,7 +262,26 @@ func get_money() -> int:
 
 
 func set_money(value: int) -> void:
-	_money = clamp(value, 0, MAX_MONEY)
+	var modifier: float = 1
+	var difference: float = value - _money
+	if difference > 0:
+		match _reagents_state:
+			StatState.HIGH || StatState.FULL:
+				modifier -= 0.05
+	elif difference < 0:
+		match _cult_size_state:
+			StatState.EMPTY:
+				modifier = 0
+			StatState.LOW:
+				modifier += 0.02
+			StatState.MID:
+				modifier += 0.05
+			StatState.HIGH || StatState.FULL:
+				modifier += 0.1
+	difference *= modifier
+	print(modifier)
+	print(difference)
+	_money = clamp(_money + difference, 0, MAX_MONEY)
 	if money_bar:
 		money_bar.value = _money
 	if _money == MAX_MONEY && _money_state != StatState.FULL:
@@ -224,7 +306,21 @@ func get_cult_size() -> int:
 
 
 func set_cult_size(value: int) -> void:
-	_cult_size = clamp(value, 0, MAX_CULT_SIZE)
+	var modifier: float = 1
+	var difference: float = value - _cult_size
+	if difference > 0:
+		match _money_state:
+			StatState.EMPTY:
+				modifier -= 0.05
+		match _chaos_state:
+			StatState.EMPTY:
+				modifier -= 0.05
+			StatState.HIGH || StatState.FULL:
+				modifier += 0.05
+	difference *= modifier
+	print(modifier)
+	print(difference)
+	_cult_size = clamp(_cult_size + difference, 0, MAX_CULT_SIZE)
 	if cult_bar:
 		cult_bar.value = _cult_size
 	if _cult_size == MAX_CULT_SIZE && _cult_size_state != StatState.FULL:
@@ -448,3 +544,7 @@ func _on_save_pressed() -> void:
 	_set_saves()
 
 #endregion
+
+
+func _on_influence_timer_timeout() -> void:
+	pass # Replace with function body.

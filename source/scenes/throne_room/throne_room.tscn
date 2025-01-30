@@ -123,4 +123,9 @@ offset_top = 628.28
 offset_right = 960.56
 offset_bottom = 595.24
 
+[node name="InfluenceTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="pressed" from="UI/SaveStates/Save" to="." method="_on_save_pressed"]
+[connection signal="timeout" from="InfluenceTimer" to="." method="_on_influence_timer_timeout"]
