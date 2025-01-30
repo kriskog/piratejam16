@@ -85,12 +85,13 @@ var _reagents_state: StatState = StatState.MID:
 #region Node Variables
 # Progress bars as variables
 @onready var influence_bar: ProgressBar = $UI/InfluenceBar
-@onready var chaos_bar: ProgressBar = $UI/SecondaryResources/ChaosBar
-@onready var money_bar: ProgressBar = $UI/SecondaryResources/MoneyBar
-@onready var cult_bar: ProgressBar = $UI/SecondaryResources/CultSizeBar
-@onready var reagent_bar: ProgressBar = $UI/SecondaryResources/ReagentsBar
+@onready var chaos_bar: ProgressBar = $UI/VBoxContainer/SecondaryResources/ChaosBar
+@onready var money_bar: ProgressBar = $UI/VBoxContainer/SecondaryResources/MoneyBar
+@onready var cult_bar: ProgressBar = $UI/VBoxContainer/SecondaryResources/CultSizeBar
+@onready var reagent_bar: ProgressBar = $UI/VBoxContainer/SecondaryResources/ReagentsBar
 @onready var resource_menu: MenuButton = $UI/ResourceDebugging
 @onready var save_states: MenuButton = $UI/SaveStates/Saves
+@onready var event_position: Control = $EventPosition
 #endregion
 
 
@@ -207,8 +208,6 @@ func set_influence(value: int) -> void:
 			StatState.HIGH || StatState.FULL:
 				modifier -= 0.15
 	difference *= modifier
-	print(modifier)
-	print(difference)
 	_influence = clamp(_influence + difference, 0, MAX_INFLUENCE)
 	if influence_bar:
 		influence_bar.value = _influence
@@ -235,8 +234,6 @@ func set_chaos(value: int) -> void:
 			StatState.EMPTY:
 				modifier += 0.05
 	difference *= modifier
-	print(modifier)
-	print(difference)
 	_chaos = clamp(_chaos + difference, 0, MAX_CHAOS)
 	if chaos_bar:
 		chaos_bar.value = _chaos
@@ -279,8 +276,6 @@ func set_money(value: int) -> void:
 			StatState.HIGH || StatState.FULL:
 				modifier += 0.1
 	difference *= modifier
-	print(modifier)
-	print(difference)
 	_money = clamp(_money + difference, 0, MAX_MONEY)
 	if money_bar:
 		money_bar.value = _money
@@ -318,8 +313,6 @@ func set_cult_size(value: int) -> void:
 			StatState.HIGH || StatState.FULL:
 				modifier += 0.05
 	difference *= modifier
-	print(modifier)
-	print(difference)
 	_cult_size = clamp(_cult_size + difference, 0, MAX_CULT_SIZE)
 	if cult_bar:
 		cult_bar.value = _cult_size

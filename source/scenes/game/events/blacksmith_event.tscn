@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmj0mf0w4ivus"]
+[gd_scene load_steps=3 format=3 uid="uid://co30rrijj442j"]
 
 [ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_snihq"]
 [ext_resource type="Script" path="res://source/scenes/game/events/blacksmith_event.gd" id="2_tx0q5"]
@@ -16,4 +16,7 @@ text = "Pay your dues"
 text = "Force him into service"
 
 [node name="TextureRect2" parent="." index="4"]
-layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 433.0
+offset_bottom = 489.0
