@@ -1,11 +1,10 @@
 extends Control
-
-#region Signals
 signal start_game
 signal htp_screen
 signal credits_screen
 signal exit_game
 #endregion
+@onready var sound: AudioStreamPlayer = $"../Click"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,19 +34,23 @@ func _on_tree_exited() -> void:
 
 func _on_start_game_pressed() -> void:
 	# Switch scene to game scene, alternatively handle this transition in the main scene.
+	sound.play()
 	start_game.emit()
 
 
 func _on_how_to_play_pressed() -> void:
+	sound.play()
 	# Hide(?) other objects, bring up HTP scene in front
 	htp_screen.emit()
 
 
 func _on_credits_pressed() -> void:
+	sound.play()
 	# Hide(?) other objects, bring up Credits scene in front
 	credits_screen.emit()
 
 
 func _on_exit_game_pressed() -> void:
+	sound.play()
 	# Should have a confirmation
 	exit_game.emit()

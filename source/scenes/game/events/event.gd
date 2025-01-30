@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_yes_pressed() -> void:
-	pass  # Replace with function body.
+	pass
 
 
 func _on_no_pressed() -> void:
