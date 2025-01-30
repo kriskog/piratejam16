@@ -46,6 +46,7 @@ var _saves: Array = []
 
 # Events
 var _events: Array = []
+var _prev_event: String = ""
 
 # Main game resource
 var _influence: int = 0:
@@ -157,6 +158,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if !current_event:
 		var new_event = _events.pick_random()
+		while new_event == _prev_event:
+			new_event = _events.pick_random()
+		_prev_event = new_event
 		current_event = load(new_event).instantiate()
 		current_event.position = event_position.position
 		add_child(current_event)
