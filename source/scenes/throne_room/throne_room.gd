@@ -95,12 +95,16 @@ var _reagents_state: StatState = StatState.MID:
 @onready var event_position: Control = $EventPosition
 @onready var influence_timer: Timer = $InfluenceTimer
 @onready var current_event: Control
+@onready var sound: AudioStreamPlayer = $pops
+@onready var click: AudioStreamPlayer = $Click
+
 #endregion
 
 
 #region Game Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	click.play()
 	_set_saves()
 	var dir = DirAccess.open("res://source/scenes/game/events")
 	if dir:
@@ -152,6 +156,10 @@ func _ready() -> void:
 	reagents_low.connect(_reagents_low)
 	reagents_high.connect(_reagents_high)
 	reagents_mid.connect(_reagents_mid)
+
+
+func _play_sound() -> void:
+	sound.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -231,6 +239,8 @@ func set_influence(value: int) -> void:
 		influence_full.emit()
 	elif _influence == 0:
 		influence_empty.emit()
+	if difference > 5:
+		_play_sound()
 
 
 func get_chaos() -> int:
@@ -240,6 +250,7 @@ func get_chaos() -> int:
 func set_chaos(value: int) -> void:
 	var modifier: float = 1
 	var difference: float = value - _chaos
+	_play_sound()
 	if difference > 0:
 		match _money_state:
 			StatState.EMPTY:
@@ -277,6 +288,7 @@ func get_money() -> int:
 func set_money(value: int) -> void:
 	var modifier: float = 1
 	var difference: float = value - _money
+	_play_sound()
 	if difference > 0:
 		match _reagents_state:
 			StatState.HIGH || StatState.FULL:
@@ -319,6 +331,7 @@ func get_cult_size() -> int:
 func set_cult_size(value: int) -> void:
 	var modifier: float = 1
 	var difference: float = value - _cult_size
+	_play_sound()
 	if difference > 0:
 		match _money_state:
 			StatState.EMPTY:
@@ -355,6 +368,7 @@ func get_reagents() -> int:
 
 func set_reagents(value: int) -> void:
 	_reagents = clamp(value, 0, MAX_REAGENTS)
+	_play_sound()
 	if reagent_bar:
 		reagent_bar.value = _reagents
 	if _reagents == MAX_REAGENTS && _reagents_state != StatState.FULL:
