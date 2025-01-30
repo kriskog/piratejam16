@@ -1,18 +1,13 @@
 extends Control
 
-#region Signals
-signal continue_game
-signal main_menu
-#endregion
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# connect signals to buttons
 	%ContinueButton.pressed.connect(_on_continue_pressed)
 	%MainMenuButton.pressed.connect(_on_main_menu_pressed)
-	%MainMenuButton.pressed.connect(_on_main_menu_pressed)
 	visibility_changed.connect(_on_visibility_changed)
-	hide() #keybind will unhide, and focus
+	hide()  #keybind will unhide, and focus
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,6 +16,7 @@ func _process(_delta: float) -> void:
 
 
 #region Signal funcs
+
 
 func _on_continue_pressed() -> void:
 	# Switch scene to game scene, alternatively handle this transition in the main scene.
@@ -36,6 +32,5 @@ func _on_visibility_changed() -> void:
 	# Keybind pressed, focus buttons etc
 	if visible:
 		%ContinueButton.grab_focus()
-
 
 #endregion

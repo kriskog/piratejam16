@@ -1,1 +1,3 @@
-Kenney.nl
+Kenney.nl - Fonts, UI packs
+notdamare - main game and menu theme
+    https://linktr.ee/notdamare

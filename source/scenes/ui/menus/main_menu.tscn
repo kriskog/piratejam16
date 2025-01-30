@@ -8,6 +8,8 @@
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lh026"]
 streams_count = 1
 stream_0/stream = ExtResource("4_mgesy")
+[ext_resource type="PackedScene" uid="uid://dbmxnk2saroru" path="res://source/scenes/ui/elements/CreditsOverlay.tscn" id="4_7bjh4"]
+[ext_resource type="PackedScene" uid="uid://n4tujvohg0o4" path="res://source/scenes/ui/elements/how_to_play.tscn" id="5_2o6w5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -116,6 +118,16 @@ focus_previous = NodePath("../CreditsButton")
 text = "Exit Game"
 flat = true
 
+<<<<<<< HEAD
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_lh026")
 pitch_scale = 1.22
+=======
+[node name="CreditsOverlay" parent="." instance=ExtResource("4_7bjh4")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="HowToPlay" parent="." instance=ExtResource("5_2o6w5")]
+unique_name_in_owner = true
+layout_mode = 1
+>>>>>>> 72f7a9a (Last menu stuff, etc etc)

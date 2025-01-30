@@ -36,17 +36,14 @@ func _on_start_game_pressed() -> void:
 
 func _on_how_to_play_pressed() -> void:
 	click.play()
-	# Hide(?) other objects, bring up HTP scene in front
-	pass
+	%HowToPlay.show()
 
 
 func _on_credits_pressed() -> void:
 	click.play()
-	# Hide(?) other objects, bring up Credits scene in front
-	pass
+	%CreditsOverlay.show()
 
 
 func _on_exit_game_pressed() -> void:
 	click.play()
-	# Should have a confirmation
-	get_tree().quit()
+
