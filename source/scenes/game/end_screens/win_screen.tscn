@@ -48,7 +48,7 @@ grow_vertical = 2
 theme = ExtResource("2_c38yv")
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = "[center]You have gained the influence required to be freed. Many cower in fear as you show off your previously lost power and destroy the realm.[/center]"
+text = "[center]You have gained the influence required summon your masters. Many cower in fear as they show off their previously lost power and destroy the realm.[/center]"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
