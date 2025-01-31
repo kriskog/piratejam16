@@ -17,7 +17,8 @@ func _process(_delta: float) -> void:
 
 
 func load_from_files():
-	var howtoplay = FileAccess.open("res://assets/how_to_play.txt", FileAccess.READ)
+	var tutorial = ResourceLoader.load("res://assets/how_to_play.txt")
+	var howtoplay = FileAccess.open(tutorial, FileAccess.READ)
 
 	var content: String = howtoplay.get_as_text()
 	%TutorialText.text = content
