@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d37h1md8phmur"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_uovv1"]
+[ext_resource type="Script" path="res://source/scenes/game/events/feast_event.gd" id="2_7ahhg"]
+
+[node name="Feast_Event" instance=ExtResource("1_uovv1")]
+script = ExtResource("2_7ahhg")
+
+[node name="Text" parent="." index="0"]
+text = "The flock demands a grand feast. How shall we proceed?"
+
+[node name="Option1" parent="." index="1"]
+text = "Raid the nearest village."
+
+[node name="Option2" parent="." index="2"]
+text = "Sacrifice livestock."

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn43o50yjvogm"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_dcyxp"]
+[ext_resource type="Script" path="res://source/scenes/game/events/caravan_event.gd" id="2_ihemb"]
+
+[node name="Caravan_Event" instance=ExtResource("1_dcyxp")]
+script = ExtResource("2_ihemb")
+
+[node name="Text" parent="." index="0"]
+text = "A merchant caravan is stranded nearby. What do we do?"
+
+[node name="Option1" parent="." index="1"]
+text = "Offer them sanctuary"
+
+[node name="Option2" parent="." index="2"]
+text = "Rob them blind"

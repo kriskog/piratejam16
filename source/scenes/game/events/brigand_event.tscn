@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://1te5ax1y1732"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_0dug1"]
+[ext_resource type="Script" path="res://source/scenes/game/events/brigand_event.gd" id="2_yu3aj"]
+
+[node name="Brigand_Event" instance=ExtResource("1_0dug1")]
+script = ExtResource("2_yu3aj")
+
+[node name="Text" parent="." index="0"]
+text = "A known brigand seeks our protection. Shall we take him in?"
+
+[node name="Option1" parent="." index="1"]
+text = "Welcome him to our ranks."
+
+[node name="Option2" parent="." index="2"]
+text = "Dispose of the liability."

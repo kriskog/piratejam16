@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://8yva3uvfqqo0"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_gsxe0"]
+[ext_resource type="Script" path="res://source/scenes/game/events/arcane_event.gd" id="2_nhchp"]
+
+[node name="Arcane_Event" instance=ExtResource("1_gsxe0")]
+script = ExtResource("2_nhchp")
+
+[node name="Text" parent="." index="0"]
+text = "A wealthy noble seeks arcane artifacts for his collection."
+
+[node name="Option1" parent="." index="1"]
+text = "Sell him some of our stock"
+
+[node name="Option2" parent="." index="2"]
+text = "Refuse. It would shame the gods to sell such artifacts!"

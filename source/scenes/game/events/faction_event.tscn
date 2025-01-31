@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8wa2k6knwy1k"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_4bvr1"]
+[ext_resource type="Script" path="res://source/scenes/game/events/faction_event.gd" id="2_7872b"]
+
+[node name="Faction_Event" instance=ExtResource("1_4bvr1")]
+script = ExtResource("2_7872b")
+
+[node name="Text" parent="." index="0"]
+text = "Factions are forming among the faithful. How do we handle them?"
+
+[node name="Option1" parent="." index="1"]
+text = "Crush the dissenters"
+
+[node name="Option2" parent="." index="2"]
+text = "Let them vent"

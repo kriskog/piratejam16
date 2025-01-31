@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://br4tmhkgkh4fl"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_yjkmx"]
+[ext_resource type="Script" path="res://source/scenes/game/events/monster_event.gd" id="2_3ln5o"]
+
+[node name="Monster_Event" instance=ExtResource("1_yjkmx")]
+script = ExtResource("2_3ln5o")
+
+[node name="Text" parent="." index="0"]
+text = "A monstrous creature terrorizes a nearby village. What do we do?"
+
+[node name="Option1" parent="." index="1"]
+text = "Send a party to slay it, and demand payment."
+
+[node name="Option2" parent="." index="2"]
+text = "Weaken the beast and capture it"

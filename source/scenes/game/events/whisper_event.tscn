@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw5krrxgw5820"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_teufd"]
+[ext_resource type="Script" path="res://source/scenes/game/events/whisper_event.gd" id="2_3iuo2"]
+
+[node name="whisper_event" instance=ExtResource("1_teufd")]
+script = ExtResource("2_3iuo2")
+
+[node name="Text" parent="." index="0"]
+text = "A follower whispers treachery. How shall we handle this?"
+
+[node name="Option1" parent="." index="1"]
+text = " Silence them forever"
+
+[node name="Option2" parent="." index="2"]
+text = "Watch them closely"

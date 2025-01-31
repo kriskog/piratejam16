@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://gvnv6pgij2jt"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_j115x"]
+[ext_resource type="Script" path="res://source/scenes/game/events/inquisitors_event.gd" id="2_88k02"]
+
+[node name="Inquisitors_Event" instance=ExtResource("1_j115x")]
+script = ExtResource("2_88k02")
+
+[node name="Text" parent="." index="0"]
+text = "Inquisitors have been seen lurking near one of our hideouts. How do we respond?"
+
+[node name="Option1" parent="." index="1"]
+text = " Cease nearby activities until they leave"
+
+[node name="Option2" parent="." index="2"]
+text = " Eliminate them before they report back"

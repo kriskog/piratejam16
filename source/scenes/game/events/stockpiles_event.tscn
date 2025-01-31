@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://j6qcies84deh"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_7r6hh"]
+[ext_resource type="Script" path="res://source/scenes/game/events/stockpiles_event.gd" id="2_vgug6"]
+
+[node name="Stockpiles_Event" instance=ExtResource("1_7r6hh")]
+script = ExtResource("2_vgug6")
+
+[node name="Text" parent="." index="0"]
+text = "Our ritual stockpiles are running dangerously low. How do we respond?"
+
+[node name="Option1" parent="." index="1"]
+text = "Raid the apothecaries"
+
+[node name="Option2" parent="." index="2"]
+text = "Dilute our potions"

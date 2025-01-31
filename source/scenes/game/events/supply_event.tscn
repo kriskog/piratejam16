@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://m3b2ne6a21qp"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_3mbnx"]
+[ext_resource type="Script" path="res://source/scenes/game/events/supply_event.gd" id="2_uy4eu"]
+
+[node name="Supply_Event" instance=ExtResource("1_3mbnx")]
+script = ExtResource("2_uy4eu")
+
+[node name="Text" parent="." index="0"]
+text = "A shipment of supplies has rotted. Do we salvage what we can?"
+
+[node name="Option1" parent="." index="1"]
+text = "Pay a crew to sort through the remains"
+
+[node name="Option2" parent="." index="2"]
+text = "Dispose of it all."

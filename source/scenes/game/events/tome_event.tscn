@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnc0w0lygo3lu"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_64hyo"]
+[ext_resource type="Script" path="res://source/scenes/game/events/tome_event.gd" id="2_4o6pc"]
+
+[node name="Tome_Event" instance=ExtResource("1_64hyo")]
+script = ExtResource("2_4o6pc")
+
+[node name="Text" parent="." index="0"]
+text = "A mysterious tome appears. Shall we study its secrets?"
+
+[node name="Option1" parent="." index="1"]
+text = "Delve into its power"
+
+[node name="Option2" parent="." index="2"]
+text = "Hide it for now"

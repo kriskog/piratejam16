@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxvabwohrph6c"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_hua55"]
+[ext_resource type="Script" path="res://source/scenes/game/events/idol_event.gd" id="2_uafqm"]
+
+[node name="Idol_Event" instance=ExtResource("1_hua55")]
+script = ExtResource("2_uafqm")
+
+[node name="Text" parent="." index="0"]
+text = "We unearthed a golden idol. What shall we do with it?"
+
+[node name="Option1" parent="." index="1"]
+text = "Use it to inspire the flock"
+
+[node name="Option2" parent="." index="2"]
+text = "Sell it for gold"

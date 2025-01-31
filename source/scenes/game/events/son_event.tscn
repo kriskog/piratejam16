@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn8l6d4ybwwv0"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_4pddq"]
+[ext_resource type="Script" path="res://source/scenes/game/events/son_event.gd" id="2_fsg10"]
+
+[node name="Son_Event" instance=ExtResource("1_4pddq")]
+script = ExtResource("2_fsg10")
+
+[node name="Text" parent="." index="0"]
+text = "A noble offers gold in exchange for the return of his son, a valuable member of our flock."
+
+[node name="Option1" parent="." index="1"]
+text = "Accept his bribe"
+
+[node name="Option2" parent="." index="2"]
+text = "Deny the bribe and silence him."
