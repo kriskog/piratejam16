@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0xmjatuvsedm"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_2rn66"]
+[ext_resource type="Script" path="res://source/scenes/game/events/raid_event.gd" id="2_tpfir"]
+
+[node name="Raid_Event" instance=ExtResource("1_2rn66")]
+script = ExtResource("2_tpfir")
+
+[node name="Text" parent="." index="0"]
+text = "The city guard is preparing a raid on our main sanctuary!"
+
+[node name="Option1" parent="." index="1"]
+text = "Strike first!"
+
+[node name="Option2" parent="." index="2"]
+text = "Fortify our defences!"

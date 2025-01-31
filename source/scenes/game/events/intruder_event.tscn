@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp7e0n6txlrde"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_j6s32"]
+[ext_resource type="Script" path="res://source/scenes/game/events/intruder_event.gd" id="2_v76gx"]
+
+[node name="Intruder_Event" instance=ExtResource("1_j6s32")]
+script = ExtResource("2_v76gx")
+
+[node name="Text" parent="." index="0"]
+text = "We located an intruder among us. How shall we deal with it?"
+
+[node name="Option1" parent="." index="1"]
+text = "Host a public execution"
+
+[node name="Option2" parent="." index="2"]
+text = "Dispose of him quietly"

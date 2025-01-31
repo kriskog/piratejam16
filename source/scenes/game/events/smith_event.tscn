@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dppaej5q30bvf"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_ppkny"]
+[ext_resource type="Script" path="res://source/scenes/game/events/smith_event.gd" id="2_r08q5"]
+
+[node name="Smith_Event" instance=ExtResource("1_ppkny")]
+script = ExtResource("2_r08q5")
+
+[node name="Text" parent="." index="0"]
+text = "A local smith knows too much about us. How do we deal with him?"
+
+[node name="Option1" parent="." index="1"]
+text = "Pay him off"
+
+[node name="Option2" parent="." index="2"]
+text = "Let him talk. We fear no one"

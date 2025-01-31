@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://caqmj7ve4w182"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_bpkdn"]
+[ext_resource type="Script" path="res://source/scenes/game/events/reagents_event.gd" id="2_6jbqk"]
+
+[node name="Reagents_Event" instance=ExtResource("1_bpkdn")]
+script = ExtResource("2_6jbqk")
+
+[node name="Text" parent="." index="0"]
+text = "We have far more reagents than we can use. What shall we do with them?"
+
+[node name="Option1" parent="." index="1"]
+text = "Sell them discreetly"
+
+[node name="Option2" parent="." index="2"]
+text = "Perform experimental rituals"

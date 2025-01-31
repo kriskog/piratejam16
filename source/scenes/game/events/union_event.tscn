@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://eqy4roekppq3"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_3bkaq"]
+[ext_resource type="Script" path="res://source/scenes/game/events/union_event.gd" id="2_53jxa"]
+
+[node name="Union_Event" instance=ExtResource("1_3bkaq")]
+script = ExtResource("2_53jxa")
+
+[node name="Text" parent="." index="0"]
+text = "Some of your followers demand 'fair treatment' and ‘rights.’ They wish to unionize! What is your will?"
+
+[node name="Option1" parent="." index="1"]
+text = "Very well… You may organize."
+
+[node name="Option2" parent="." index="2"]
+text = "Silence this foolishness!"

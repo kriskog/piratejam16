@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkrhbduav5enq"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_gofi3"]
+[ext_resource type="Script" path="res://source/scenes/game/events/oracle_event.gd" id="2_58h1x"]
+
+[node name="Oracle_Event" instance=ExtResource("1_gofi3")]
+script = ExtResource("2_58h1x")
+
+[node name="Text" parent="." index="0"]
+text = "An oracle offers to reveal our future—for a price"
+
+[node name="Option1" parent="." index="1"]
+text = "Pay for the prophecy"
+
+[node name="Option2" parent="." index="2"]
+text = "We must trust the plans of our gods"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctmrn67rap11a"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_iiv85"]
+[ext_resource type="Script" path="res://source/scenes/game/events/capture_event.gd" id="2_h5n71"]
+
+[node name="Capture_Event" instance=ExtResource("1_iiv85")]
+script = ExtResource("2_h5n71")
+
+[node name="Text" parent="." index="0"]
+text = "A group of our own have been captured. Shall we intervene?"
+
+[node name="Option1" parent="." index="1"]
+text = "Bribe the guards for their release"
+
+[node name="Option2" parent="." index="2"]
+text = "Leave them to their fate"

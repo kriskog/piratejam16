@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxc7pwytjfx2v"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_gs1fi"]
+[ext_resource type="Script" path="res://source/scenes/game/events/ritual_event.gd" id="2_l5e2o"]
+
+[node name="Ritual_Event" instance=ExtResource("1_gs1fi")]
+script = ExtResource("2_l5e2o")
+
+[node name="Text" parent="." index="0"]
+text = "A ritual calls for the blood of our own. Shall we proceed?"
+
+[node name="Option1" parent="." index="1"]
+text = "A small price for great power"
+
+[node name="Option2" parent="." index="2"]
+text = "Not today"

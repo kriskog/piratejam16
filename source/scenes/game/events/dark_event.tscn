@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://narpk1q8rpcf"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_nnfvl"]
+[ext_resource type="Script" path="res://dark_event.gd" id="2_n81eq"]
+
+[node name="Dark_Event" instance=ExtResource("1_nnfvl")]
+script = ExtResource("2_n81eq")
+
+[node name="Text" parent="." index="0"]
+text = "A dark force bestows its blessing upon us."
+
+[node name="Option1" parent="." index="1"]
+text = "We accept this gift"
+
+[node name="Option2" parent="." index="2"]
+text = "We accept this gift"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl7ojrf0ak7kc"]
+
+[ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_ba448"]
+[ext_resource type="Script" path="res://source/scenes/game/events/moon_event.gd" id="2_alv1g"]
+
+[node name="moon_event" instance=ExtResource("1_ba448")]
+script = ExtResource("2_alv1g")
+
+[node name="Text" parent="." index="0"]
+text = "A moonless night calls for a ritual. Shall we prepare?"
+
+[node name="Option1" parent="." index="1"]
+text = "Perform the dark rite."
+
+[node name="Option2" parent="." index="2"]
+text = "Not tonight."
