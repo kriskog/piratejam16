@@ -135,8 +135,10 @@ pitch_scale = 1.22
 
 [node name="CreditsOverlay" parent="." instance=ExtResource("4_7bjh4")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 
 [node name="HowToPlay" parent="." instance=ExtResource("5_2o6w5")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
