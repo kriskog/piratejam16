@@ -45,7 +45,52 @@ const MAX_REAGENTS: int = 100
 var _saves: Array = []
 
 # Events
-var _events: Array = []
+var _events: Array = [
+	"res://source/scenes/game/events/alchemist_event.tscn",
+	"res://source/scenes/game/events/arcane_event.tscn",
+	"res://source/scenes/game/events/blacksmith_event.tscn",
+	"res://source/scenes/game/events/brigand_event.tscn",
+	"res://source/scenes/game/events/cache_event.tscn",
+	"res://source/scenes/game/events/capture_event.tscn",
+	"res://source/scenes/game/events/caravan_event.tscn",
+	"res://source/scenes/game/events/child_event.tscn",
+	"res://source/scenes/game/events/crops_event.tscn",
+	"res://source/scenes/game/events/cursed_event.tscn",
+	"res://source/scenes/game/events/dark_event.tscn",
+	"res://source/scenes/game/events/dissent_event.tscn",
+	"res://source/scenes/game/events/faction_event.tscn",
+	"res://source/scenes/game/events/feast_event.tscn",
+	"res://source/scenes/game/events/feast_or_famine_event.tscn",
+	"res://source/scenes/game/events/festival_event.tscn",
+	"res://source/scenes/game/events/heretic_event.tscn",
+	"res://source/scenes/game/events/idol_event.tscn",
+	"res://source/scenes/game/events/inquisitors_event.tscn",
+	"res://source/scenes/game/events/intruder_event.tscn",
+	"res://source/scenes/game/events/left_event.tscn",
+	"res://source/scenes/game/events/miracle_event.gd",
+	"res://source/scenes/game/events/monster_event.gd",
+	"res://source/scenes/game/events/moon_event.tscn",
+	"res://source/scenes/game/events/night_event.tscn",
+	"res://source/scenes/game/events/noble_event.tscn",
+	"res://source/scenes/game/events/oracle_event.tscn",
+	"res://source/scenes/game/events/pilgrimage_event.tscn",
+	"res://source/scenes/game/events/plague_event.tscn",
+	"res://source/scenes/game/events/purge_event.tscn",
+	"res://source/scenes/game/events/raid_event.tscn",
+	"res://source/scenes/game/events/reagents_event.tscn",
+	"res://source/scenes/game/events/relic_event.tscn",
+	"res://source/scenes/game/events/ritual_event.tscn",
+	"res://source/scenes/game/events/smith_event.tscn",
+	"res://source/scenes/game/events/snackarafice_event.tscn",
+	"res://source/scenes/game/events/son_event.tscn",
+	"res://source/scenes/game/events/stockpiles_event.tscn",
+	"res://source/scenes/game/events/supply_event.tscn",
+	"res://source/scenes/game/events/tax_event.tscn",
+	"res://source/scenes/game/events/tome_event.tscn",
+	"res://source/scenes/game/events/union_event.tscn",
+	"res://source/scenes/game/events/villagers_event.tscn",
+	"res://source/scenes/game/events/whisper_event.tscn"
+]
 var _prev_event: String = ""
 
 # Main game resource
@@ -107,18 +152,18 @@ var _reagents_state: StatState = StatState.MID:
 func _ready() -> void:
 	click.play()
 	_play_theme()
-	_set_saves()
-	var dir = DirAccess.open("res://source/scenes/game/events")
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			_events.append("res://source/scenes/game/events/" + file_name)
-			file_name = dir.get_next()
-	_events = _events.filter(func(event): return event.contains(".tscn"))
-	_events = _events.filter(
-		func(event): return event != "res://source/scenes/game/events/event.tscn"
-	)
+	# _set_saves()
+	# var dir = DirAccess.open("res://source/scenes/game/events")
+	# if dir:
+	# 	dir.list_dir_begin()
+	# 	var file_name = dir.get_next()
+	# 	while file_name != "":
+	# 		_events.append("res://source/scenes/game/events/" + file_name)
+	# 		file_name = dir.get_next()
+	# _events = _events.filter(func(event): return event.contains(".tscn"))
+	# _events = _events.filter(
+	# 	func(event): return event != "res://source/scenes/game/events/event.tscn"
+	# )
 	influence_bar.value = get_influence()
 	chaos_bar.value = get_chaos()
 	money_bar.value = get_money()
