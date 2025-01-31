@@ -17,10 +17,8 @@ func _process(_delta: float) -> void:
 
 
 func load_from_files():
-	var team_members = ResourceLoader.load("res://assets/team_members.txt")
-	var team = FileAccess.open(team_members, FileAccess.READ)
-	var attributors = ResourceLoader.load("res://assets/attributions.txt")
-	var attributions = FileAccess.open(attributors, FileAccess.READ)
+	var team = FileAccess.open("res://assets/team_members.txt", FileAccess.READ)
+	var attributions = FileAccess.open("res://assets/attributions.txt", FileAccess.READ)
 
 	var content: String = (
 		"TEAM MEMBERS:\n" + team.get_as_text() + "\n\nATTRIBUTIONS:\n" + attributions.get_as_text()

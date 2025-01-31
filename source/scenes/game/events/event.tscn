@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpe40lw5n8whj"]
+[gd_scene load_steps=10 format=3 uid="uid://dpe40lw5n8whj"]
 
 [ext_resource type="Script" path="res://source/scenes/game/events/event.gd" id="1_x7wxp"]
 [ext_resource type="FontFile" uid="uid://7q7ivtv8ldr6" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_6we37"]
 [ext_resource type="Script" path="res://source/scenes/game/events/option_1.gd" id="3_o7ox1"]
+[ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="3_p31eu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4g2y"]
 font = ExtResource("2_6we37")
@@ -26,25 +27,25 @@ gradient = SubResource("Gradient_6tnb1")
 [node name="Event" type="Control"]
 z_index = 5
 layout_mode = 3
-anchor_left = -0.11
-anchor_top = -0.216
-anchor_right = 0.107
-anchor_bottom = 0.222
-offset_left = 25.2
-offset_top = 23.28
-offset_right = -22.44
-offset_bottom = -149.76
+anchor_left = -0.177083
+anchor_top = -0.306481
+anchor_right = 0.141667
+anchor_bottom = 0.336111
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x7wxp")
+metadata/_edit_use_anchors_ = true
 
 [node name="Text" type="Label" parent="."]
 z_index = 6
-layout_mode = 2
-offset_left = 12.0
-offset_top = 14.0
-offset_right = 365.0
-offset_bottom = 193.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -176.5
+offset_right = 176.5
+offset_bottom = 179.0
+grow_horizontal = 2
 text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i"
 label_settings = SubResource("LabelSettings_g4g2y")
 horizontal_alignment = 1
@@ -54,21 +55,26 @@ autowrap_mode = 3
 [node name="Option1" type="Button" parent="."]
 unique_name_in_owner = true
 z_index = 5
-layout_mode = 2
-offset_left = 13.0
-offset_top = 197.0
-offset_right = 365.0
-offset_bottom = 295.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -49.0
+offset_right = 176.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_left = NodePath("../Option2")
 focus_neighbor_top = NodePath("../Option2")
 focus_neighbor_right = NodePath("../Option2")
 focus_neighbor_bottom = NodePath("../Option2")
 focus_next = NodePath("../Option2")
 focus_previous = NodePath("../Option2")
-theme_override_colors/font_hover_pressed_color = Color(0.054902, 0.054902, 0.054902, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme = ExtResource("3_p31eu")
+theme_override_font_sizes/font_size = 15
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt u"
 autowrap_mode = 3
 script = ExtResource("3_o7ox1")
@@ -76,46 +82,50 @@ script = ExtResource("3_o7ox1")
 [node name="Option2" type="Button" parent="."]
 unique_name_in_owner = true
 z_index = 5
-layout_mode = 2
-offset_left = 14.0
-offset_top = 326.0
-offset_right = 367.0
-offset_bottom = 413.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -178.0
+offset_top = -176.0
+offset_right = 175.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 0
 focus_neighbor_left = NodePath("../Option1")
 focus_neighbor_top = NodePath("../Option1")
 focus_neighbor_right = NodePath("../Option1")
 focus_neighbor_bottom = NodePath("../Option1")
 focus_next = NodePath("../Option1")
 focus_previous = NodePath("../Option1")
-theme_override_colors/font_hover_pressed_color = Color(0.054902, 0.054902, 0.054902, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.054902, 0.054902, 0.054902, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme = ExtResource("3_p31eu")
+theme_override_font_sizes/font_size = 15
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt u"
 autowrap_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = 1
-layout_mode = 2
-offset_left = -20.0
-offset_top = -17.0
-offset_right = 392.0
-offset_bottom = 451.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_lg44m")
-metadata/_edit_lock_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-visible = false
 z_index = -1
-layout_mode = 0
-offset_left = -30.0
-offset_top = -27.0
-offset_right = 403.0
-offset_bottom = 462.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_sb18l")
-metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="Option1" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="Option2" to="." method="_on_no_pressed"]

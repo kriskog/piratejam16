@@ -1,8 +1,14 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cn762radik7xw"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cn762radik7xw"]
 
 [ext_resource type="FontFile" uid="uid://btd58n2qlgnwm" path="res://assets/fonts/Kenney Rocket Square.ttf" id="1_6if28"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4g770"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ej4fv"]
+bg_color = Color(0.827451, 0.827451, 0.827451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu1na"]
+bg_color = Color(0.466667, 0, 0.0705882, 1)
 
 [resource]
 default_font = ExtResource("1_6if28")
@@ -19,3 +25,10 @@ Label/colors/font_color = Color(0.465633, 0, 0.0687849, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 20
 Label/font_sizes/font_size = 80
+ProgressBar/colors/font_color = Color(0, 0, 0, 1)
+ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
+ProgressBar/constants/outline_size = 5
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ej4fv")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_qu1na")
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 5

@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://btieu1cno5o6k"]
+[gd_scene load_steps=15 format=3 uid="uid://btieu1cno5o6k"]
 
 [ext_resource type="Script" path="res://source/scenes/throne_room/throne_room.gd" id="1_6h3mq"]
-[ext_resource type="Texture2D" uid="uid://caii4b7t7uk1l" path="res://assets/REPLACE_BEFORE_SUBMISSION/throneroom_placeholder.jpg" id="2_b0ee3"]
 [ext_resource type="PackedScene" uid="uid://7codxq0yg473" path="res://source/scenes/ui/elements/TEMPORARYBACKBUTTON.tscn" id="3_lxolc"]
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="4_77ieo"]
 [ext_resource type="AudioStream" uid="uid://cvqk7e3yl4y22" path="res://assets/sounds/01-Audio 1.wav" id="5_qxxja"]
@@ -11,6 +10,14 @@
 [ext_resource type="AudioStream" uid="uid://dtv2ykdp6xvxc" path="res://assets/sounds/04-Audio 4.wav" id="8_7e1yd"]
 [ext_resource type="AudioStream" uid="uid://ovmpjbrynvci" path="res://assets/sounds/click.wav" id="9_4uai5"]
 [ext_resource type="AudioStream" uid="uid://i8b81ubxfxmr" path="res://assets/audio/main_theme.ogg" id="11_32ofq"]
+
+[sub_resource type="Gradient" id="Gradient_kbart"]
+colors = PackedColorArray(0, 0.466667, 0.396078, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u14nb"]
+gradient = SubResource("Gradient_kbart")
+fill_from = Vector2(0.444954, 0)
+fill_to = Vector2(0.417431, 1)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7n2rf"]
 random_pitch = 1.98
@@ -43,7 +50,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("2_b0ee3")
+texture = SubResource("GradientTexture2D_u14nb")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 1
@@ -150,6 +157,7 @@ fill_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme = ExtResource("4_77ieo")
 fill_mode = 3
 
 [node name="TEMPORARYBACKBUTTON" parent="UI" instance=ExtResource("3_lxolc")]
@@ -206,6 +214,7 @@ grow_vertical = 2
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_3ascw")]
 unique_name_in_owner = true
+visible = false
 visibility_layer = 2
 z_index = 100
 layout_mode = 1
