@@ -4,9 +4,6 @@
 [ext_resource type="Script" path="res://source/scenes/game/events/snackarafice_event.gd" id="2_as7gf"]
 
 [node name="Snackarafice_Event" instance=ExtResource("1_71kch")]
-anchor_top = -0.21
-offset_top = 16.8
-offset_right = -24.36
 script = ExtResource("2_as7gf")
 
 [node name="Text" parent="." index="0"]
@@ -19,6 +16,7 @@ text = "Take the unfaithful"
 text = "No we bide our time"
 
 [node name="TextureRect2" parent="." index="4"]
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 offset_left = -31.0
 offset_top = -29.0
@@ -32,3 +30,6 @@ offset_top = 0.0
 offset_right = 433.0
 offset_bottom = 489.0
 >>>>>>> Stashed changes
+=======
+layout_mode = 0
+>>>>>>> main

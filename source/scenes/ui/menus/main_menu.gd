@@ -1,10 +1,7 @@
 extends Control
-signal start_game
-signal htp_screen
-signal credits_screen
-signal exit_game
-#endregion
-@onready var sound: AudioStreamPlayer = $"../Click"
+
+@onready var click: AudioStreamPlayer = $Click
+@onready var menu_theme: AudioStreamPlayer = $menu_theme
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,9 +19,14 @@ func _ready() -> void:
 #region Signal funcs
 
 
+func _play_theme() -> void:
+	menu_theme.play()
+
+
 # Makes sure we do the important things when the menu opens. Set button focus, menu music?
 func _on_tree_entered() -> void:
 	%StartGameButton.grab_focus()
+	_play_theme()
 
 
 func _on_tree_exited() -> void:
@@ -34,23 +36,20 @@ func _on_tree_exited() -> void:
 
 func _on_start_game_pressed() -> void:
 	# Switch scene to game scene, alternatively handle this transition in the main scene.
-	sound.play()
-	start_game.emit()
+	click.play()
+	get_tree().change_scene_to_file("res://source/scenes/throne_room/throne_room.tscn")
 
 
 func _on_how_to_play_pressed() -> void:
-	sound.play()
-	# Hide(?) other objects, bring up HTP scene in front
-	htp_screen.emit()
+	click.play()
+	%HowToPlay.show()
 
 
 func _on_credits_pressed() -> void:
-	sound.play()
-	# Hide(?) other objects, bring up Credits scene in front
-	credits_screen.emit()
+	click.play()
+	%CreditsOverlay.show()
 
 
 func _on_exit_game_pressed() -> void:
-	sound.play()
-	# Should have a confirmation
-	exit_game.emit()
+	click.play()
+	get_tree().quit()

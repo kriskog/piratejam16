@@ -4,27 +4,19 @@
 [ext_resource type="Script" path="res://source/scenes/game/events/tax_event.gd" id="2_w3bcl"]
 
 [node name="TaxEvent" instance=ExtResource("1_was83")]
-anchor_left = -0.112
-anchor_top = -0.226
-offset_left = 30.04
-offset_top = 27.08
-offset_bottom = -157.32
 script = ExtResource("2_w3bcl")
 
 [node name="Text" parent="." index="0"]
 text = "The tax collector demands coin. Should we comply?"
 
 [node name="Option1" parent="." index="1"]
-offset_left = 14.0
-offset_top = 202.0
-offset_right = 366.0
-offset_bottom = 300.0
 text = "Pay him begrudgingly"
 
 [node name="Option2" parent="." index="2"]
 text = "Make him disappear"
 
 [node name="TextureRect2" parent="." index="4"]
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 z_index = 0
 anchor_left = -0.107
@@ -43,3 +35,6 @@ offset_top = 0.0
 offset_right = 433.0
 offset_bottom = 489.0
 >>>>>>> Stashed changes
+=======
+layout_mode = 0
+>>>>>>> main

@@ -97,6 +97,7 @@ var _reagents_state: StatState = StatState.MID:
 @onready var current_event: Control
 @onready var sound: AudioStreamPlayer = $pops
 @onready var click: AudioStreamPlayer = $Click
+@onready var main_theme: AudioStreamPlayer = $main_theme
 
 #endregion
 
@@ -105,6 +106,7 @@ var _reagents_state: StatState = StatState.MID:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	click.play()
+	_play_theme()
 	_set_saves()
 	var dir = DirAccess.open("res://source/scenes/game/events")
 	if dir:
@@ -162,6 +164,10 @@ func _play_sound() -> void:
 	sound.play()
 
 
+func _play_theme() -> void:
+	main_theme.play()
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if !current_event:
@@ -174,6 +180,12 @@ func _process(_delta: float) -> void:
 		add_child(current_event)
 	if current_event && influence_timer.is_stopped() && _influence > 0:
 		influence_timer.start()
+
+	if Input.is_action_just_pressed("toggle_pause"):
+		if %PauseMenu.visible:
+			%PauseMenu.hide()
+		else:
+			%PauseMenu.show()
 
 
 func _set_saves() -> void:
