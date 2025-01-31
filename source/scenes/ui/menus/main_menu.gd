@@ -18,8 +18,10 @@ func _ready() -> void:
 
 #region Signal funcs
 
+
 func _play_theme() -> void:
 	menu_theme.play()
+
 
 # Makes sure we do the important things when the menu opens. Set button focus, menu music?
 func _on_tree_entered() -> void:
@@ -51,4 +53,3 @@ func _on_credits_pressed() -> void:
 func _on_exit_game_pressed() -> void:
 	click.play()
 	get_tree().quit()
-	

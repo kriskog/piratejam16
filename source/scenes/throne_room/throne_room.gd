@@ -163,8 +163,10 @@ func _ready() -> void:
 func _play_sound() -> void:
 	sound.play()
 
+
 func _play_theme() -> void:
 	main_theme.play()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
