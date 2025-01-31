@@ -16,4 +16,25 @@ text = "Pay him begrudgingly"
 text = "Make him disappear"
 
 [node name="TextureRect2" parent="." index="4"]
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+z_index = 0
+anchor_left = -0.107
+anchor_top = -0.123
+anchor_right = -0.107
+anchor_bottom = -0.123
+offset_left = 8.483
+offset_top = 8.9
+offset_right = 440.483
+offset_bottom = 502.9
+
+[connection signal="button_up" from="Option1" to="." method="_on_option_1_button_up"]
+=======
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 433.0
+offset_bottom = 489.0
+>>>>>>> Stashed changes
+=======
 layout_mode = 0
+>>>>>>> main

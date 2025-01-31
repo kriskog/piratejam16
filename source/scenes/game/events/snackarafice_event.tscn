@@ -16,4 +16,20 @@ text = "Take the unfaithful"
 text = "No we bide our time"
 
 [node name="TextureRect2" parent="." index="4"]
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+offset_left = -31.0
+offset_top = -29.0
+offset_right = 402.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+=======
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 433.0
+offset_bottom = 489.0
+>>>>>>> Stashed changes
+=======
 layout_mode = 0
+>>>>>>> main
