@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://btieu1cno5o6k"]
+[gd_scene load_steps=20 format=3 uid="uid://btieu1cno5o6k"]
 
 [ext_resource type="Script" path="res://source/scenes/throne_room/throne_room.gd" id="1_6h3mq"]
-[ext_resource type="PackedScene" uid="uid://7codxq0yg473" path="res://source/scenes/ui/elements/TEMPORARYBACKBUTTON.tscn" id="3_lxolc"]
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="4_77ieo"]
 [ext_resource type="FontFile" uid="uid://bgqetfc1tfv7g" path="res://assets/fonts/Kenney Mini.ttf" id="4_82cux"]
 [ext_resource type="Script" path="res://source/scenes/throne_room/pause_button.gd" id="5_51juv"]
@@ -170,19 +169,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = ExtResource("4_77ieo")
 fill_mode = 3
-
-[node name="TEMPORARYBACKBUTTON" parent="UI" instance=ExtResource("3_lxolc")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -355.0
-offset_top = -68.0
-offset_right = 355.0
-grow_horizontal = 2
-grow_vertical = 0
 
 [node name="ResourceDebugging" type="MenuButton" parent="UI"]
 visible = false
