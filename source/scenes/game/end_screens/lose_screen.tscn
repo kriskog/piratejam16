@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ytwxkd4co1gm"]
+[gd_scene load_steps=4 format=3 uid="uid://ytwxkd4co1gm"]
 
 [ext_resource type="Script" path="res://source/scenes/game/end_screens/lose_screen.gd" id="1_4vr07"]
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_51x31"]
+[ext_resource type="AudioStream" uid="uid://b2w36kox4rpqi" path="res://assets/audio/wah-wah-sad-trombone-6347.mp3" id="3_tt6mg"]
 
 [node name="LoseScreen" type="Control"]
 layout_mode = 3
@@ -43,5 +44,8 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_51x31")
 text = "Back to main menu"
+
+[node name="wompwomp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tt6mg")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

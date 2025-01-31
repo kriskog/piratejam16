@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	# Switch scene to main scene, to avoid getting stuck during development.
-	get_tree().change_scene_to_file("res://source/scenes/main.tscn")
+	get_tree().change_scene_to_file("res://source/scenes/ui/menus/main_menu.tscn")
