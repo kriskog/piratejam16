@@ -2,9 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_6eapn"]
 [ext_resource type="Script" path="res://source/scenes/ui/menus/main_menu.gd" id="1_76osk"]
-[ext_resource type="PackedScene" path="res://source/scenes/ui/elements/CreditsOverlay.tscn" id="4_7bjh4"]
+[ext_resource type="PackedScene" uid="uid://dcnf2nu2hbogy" path="res://source/scenes/ui/elements/CreditsOverlay.tscn" id="4_7bjh4"]
 [ext_resource type="AudioStream" uid="uid://ovmpjbrynvci" path="res://assets/sounds/click.wav" id="4_mgesy"]
-[ext_resource type="PackedScene" path="res://source/scenes/ui/elements/how_to_play.tscn" id="5_2o6w5"]
+[ext_resource type="PackedScene" uid="uid://bj1gpalilav3a" path="res://source/scenes/ui/elements/how_to_play.tscn" id="5_2o6w5"]
 [ext_resource type="AudioStream" uid="uid://c2ktuvpqqysul" path="res://assets/audio/menu_theme.ogg" id="7_g5yp5"]
 
 [sub_resource type="Gradient" id="Gradient_nxiiu"]
@@ -68,7 +68,7 @@ alignment = 1
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "The Crimson Whisker"
+text = "The Crimson Dagger"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -135,8 +135,10 @@ pitch_scale = 1.22
 
 [node name="CreditsOverlay" parent="." instance=ExtResource("4_7bjh4")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 
 [node name="HowToPlay" parent="." instance=ExtResource("5_2o6w5")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1

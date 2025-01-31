@@ -81,12 +81,11 @@ var _events: Array = [
 	"res://source/scenes/game/events/relic_event.tscn",
 	"res://source/scenes/game/events/ritual_event.tscn",
 	"res://source/scenes/game/events/smith_event.tscn",
-	# Broken for some reason crashes anytime it tries to load this event
-	# "res://source/scenes/game/events/snackarafice_event.tscn",
+	"res://source/scenes/game/events/snackarafice_event.tscn",
 	"res://source/scenes/game/events/son_event.tscn",
 	"res://source/scenes/game/events/stockpiles_event.tscn",
 	"res://source/scenes/game/events/supply_event.tscn",
-	# "res://source/scenes/game/events/tax_event.tscn",
+	"res://source/scenes/game/events/tax_event.tscn",
 	"res://source/scenes/game/events/tome_event.tscn",
 	"res://source/scenes/game/events/union_event.tscn",
 	"res://source/scenes/game/events/villagers_event.tscn",
@@ -226,12 +225,6 @@ func _process(_delta: float) -> void:
 		add_child(current_event)
 	if current_event && influence_timer.is_stopped() && _influence > 0:
 		influence_timer.start()
-
-	if Input.is_action_just_pressed("toggle_pause"):
-		if %PauseMenu.visible:
-			%PauseMenu.hide()
-		else:
-			%PauseMenu.show()
 
 
 func _set_saves() -> void:

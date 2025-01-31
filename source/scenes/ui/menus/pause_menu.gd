@@ -1,5 +1,7 @@
 extends Control
 
+signal unpaused
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -7,30 +9,36 @@ func _ready() -> void:
 	%ContinueButton.pressed.connect(_on_continue_pressed)
 	%MainMenuButton.pressed.connect(_on_main_menu_pressed)
 	visibility_changed.connect(_on_visibility_changed)
-	hide()  #keybind will unhide, and focus
+	hide()  # Keybind will unhide, and focus buttons
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("toggle_pause"):
+		if visible:
+			hide()
+		else:
+			show()
 
 
 #region Signal funcs
 
 
 func _on_continue_pressed() -> void:
-	# Switch scene to game scene, alternatively handle this transition in the main scene.
 	hide()
 
 
 func _on_main_menu_pressed() -> void:
-	# Signals main to kill current scenes and bring up main menu.
+	hide()
 	get_tree().change_scene_to_file("res://source/scenes/ui/menus/main_menu.tscn")
 
 
 func _on_visibility_changed() -> void:
-	# Keybind pressed, focus buttons etc
 	if visible:
+		get_tree().paused = true
 		%ContinueButton.grab_focus()
+	else:
+		get_tree().paused = false
+		unpaused.emit()
 
 #endregion

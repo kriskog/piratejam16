@@ -8,19 +8,11 @@ func _ready() -> void:
 	%CloseButton.pressed.connect(_on_close_pressed)
 	visibility_changed.connect(_on_visibility_changed)
 	hide()
-	load_from_files()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-
-
-func load_from_files():
-	var howtoplay = FileAccess.open("res://assets/how_to_play.txt", FileAccess.READ)
-
-	var content: String = howtoplay.get_as_text()
-	%TutorialText.text = content
 
 
 #region signal funcs
