@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://narpk1q8rpcf"]
 
 [ext_resource type="PackedScene" uid="uid://dpe40lw5n8whj" path="res://source/scenes/game/events/event.tscn" id="1_nnfvl"]
-[ext_resource type="Script" path="res://dark_event.gd" id="2_n81eq"]
+[ext_resource type="Script" path="res://source/scenes/game/events/dark_event.gd" id="2_n81eq"]
 
 [node name="Dark_Event" instance=ExtResource("1_nnfvl")]
 script = ExtResource("2_n81eq")

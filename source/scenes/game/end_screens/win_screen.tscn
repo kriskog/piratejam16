@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnb0pjry7ghx1"]
+[gd_scene load_steps=5 format=3 uid="uid://dnb0pjry7ghx1"]
 
 [ext_resource type="Script" path="res://source/scenes/game/end_screens/win_screen.gd" id="1_vwuvw"]
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="2_c38yv"]
+
+[sub_resource type="Gradient" id="Gradient_3ejgu"]
+offsets = PackedFloat32Array(0, 0.987013)
+colors = PackedColorArray(0.666667, 0, 0.101961, 1, 0.466667, 0, 0.0666667, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kcmvh"]
+gradient = SubResource("Gradient_3ejgu")
+fill_from = Vector2(0.477064, 1)
+fill_to = Vector2(0.449541, 0.53211)
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -11,6 +20,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vwuvw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kcmvh")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
