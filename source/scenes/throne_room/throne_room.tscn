@@ -212,6 +212,7 @@ layout_mode = 1
 
 [node name="pops" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_7n2rf")
+max_polyphony = 5
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_yc0a2")
@@ -219,6 +220,7 @@ pitch_scale = 1.22
 
 [node name="main_theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_32ofq")
+parameters/looping = true
 
 [connection signal="pressed" from="UI/SaveStates/Save" to="." method="_on_save_pressed"]
 [connection signal="timeout" from="InfluenceTimer" to="." method="_on_influence_timer_timeout"]
