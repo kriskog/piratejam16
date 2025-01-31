@@ -10,7 +10,7 @@ func _ready() -> void:
 	hide()
 	%CreditsText.text = (
 		"TEAM MEMBERS:\n"
-		+ 'Skog\nDavid B.\nBlake "big hog" Molnar\nUrsoLobster'
+		+ 'Skog\nDavid B.\nBlake "big hog" Molnar\nRenzo "UrsoLobster" Diniz'
 		+ "\n\nATTRIBUTIONS:\n"
 		+ "Kenney.nl - Fonts\nnotdamare - main game and menu theme\nhttps://linktr.ee/notdamare\nkirbydx - wah-wah-sad-trombone-6347.mp3"
 	)
