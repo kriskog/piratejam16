@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://btieu1cno5o6k"]
 
 [ext_resource type="Script" path="res://source/scenes/throne_room/throne_room.gd" id="1_6h3mq"]
-[ext_resource type="PackedScene" uid="uid://7codxq0yg473" path="res://source/scenes/ui/elements/TEMPORARYBACKBUTTON.tscn" id="3_lxolc"]
+[ext_resource type="PackedScene" path="res://source/scenes/ui/elements/TEMPORARYBACKBUTTON.tscn" id="3_lxolc"]
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="4_77ieo"]
 [ext_resource type="AudioStream" uid="uid://cvqk7e3yl4y22" path="res://assets/sounds/01-Audio 1.wav" id="5_qxxja"]
 [ext_resource type="PackedScene" uid="uid://bh3gawj40w8gw" path="res://source/scenes/ui/menus/pause_menu.tscn" id="6_3ascw"]

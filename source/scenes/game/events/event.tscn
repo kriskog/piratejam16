@@ -27,10 +27,10 @@ gradient = SubResource("Gradient_6tnb1")
 [node name="Event" type="Control"]
 z_index = 5
 layout_mode = 3
-anchor_left = -0.177083
-anchor_top = -0.306481
-anchor_right = 0.141667
-anchor_bottom = 0.336111
+anchor_left = -0.158854
+anchor_top = -0.319444
+anchor_right = 0.158333
+anchor_bottom = 0.325926
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x7wxp")
@@ -88,10 +88,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -178.0
-offset_top = -176.0
-offset_right = 175.0
-offset_bottom = -89.0
+offset_left = -174.5
+offset_top = -203.0
+offset_right = 178.5
+offset_bottom = -116.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_neighbor_left = NodePath("../Option1")
@@ -117,6 +117,7 @@ mouse_filter = 2
 texture = SubResource("GradientTexture2D_lg44m")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
