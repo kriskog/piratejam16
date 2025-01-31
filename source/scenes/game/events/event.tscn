@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpe40lw5n8whj"]
+[gd_scene load_steps=9 format=3 uid="uid://dpe40lw5n8whj"]
 
 [ext_resource type="Script" path="res://source/scenes/game/events/event.gd" id="1_x7wxp"]
 [ext_resource type="FontFile" uid="uid://7q7ivtv8ldr6" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_6we37"]
+[ext_resource type="Script" path="res://source/scenes/game/events/option_1.gd" id="3_o7ox1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4g2y"]
 font = ExtResource("2_6we37")
@@ -64,8 +65,13 @@ focus_neighbor_right = NodePath("../Option2")
 focus_neighbor_bottom = NodePath("../Option2")
 focus_next = NodePath("../Option2")
 focus_previous = NodePath("../Option2")
+theme_override_colors/font_hover_pressed_color = Color(0.054902, 0.054902, 0.054902, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt u"
 autowrap_mode = 3
+script = ExtResource("3_o7ox1")
 
 [node name="Option2" type="Button" parent="."]
 unique_name_in_owner = true
@@ -81,6 +87,10 @@ focus_neighbor_right = NodePath("../Option1")
 focus_neighbor_bottom = NodePath("../Option1")
 focus_next = NodePath("../Option1")
 focus_previous = NodePath("../Option1")
+theme_override_colors/font_hover_pressed_color = Color(0.054902, 0.054902, 0.054902, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.054902, 0.054902, 0.054902, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt u"
 autowrap_mode = 3
 

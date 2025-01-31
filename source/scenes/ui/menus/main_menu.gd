@@ -50,3 +50,5 @@ func _on_credits_pressed() -> void:
 
 func _on_exit_game_pressed() -> void:
 	click.play()
+	get_tree().quit()
+	

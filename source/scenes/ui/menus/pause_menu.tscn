@@ -92,5 +92,6 @@ size_flags_vertical = 4
 focus_neighbor_top = NodePath("../ContinueButton")
 focus_neighbor_bottom = NodePath("../ContinueButton")
 focus_next = NodePath("../ContinueButton")
+focus_previous = NodePath("../ContinueButton")
 text = "Main Menu"
 flat = true
