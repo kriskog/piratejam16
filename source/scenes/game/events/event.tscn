@@ -7,6 +7,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4g2y"]
 font = ExtResource("2_6we37")
+font_size = 32
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_v3hoc"]
@@ -42,9 +43,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -176.5
-offset_right = 176.5
-offset_bottom = 179.0
+offset_left = -271.5
+offset_right = 275.5
+offset_bottom = 249.0
 grow_horizontal = 2
 text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i"
 label_settings = SubResource("LabelSettings_g4g2y")

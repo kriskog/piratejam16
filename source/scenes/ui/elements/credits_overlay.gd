@@ -8,22 +8,17 @@ func _ready() -> void:
 	%CloseButton.pressed.connect(_on_close_pressed)
 	visibility_changed.connect(_on_visibility_changed)
 	hide()
-	load_from_files()
+	%CreditsText.text = (
+		"TEAM MEMBERS:\n"
+		+ 'Skog\nDavid B.\nBlake "big hog" Molnar\nUrsoLobster'
+		+ "\n\nATTRIBUTIONS:\n"
+		+ "Kenney.nl - Fonts\nnotdamare - main game and menu theme\nhttps://linktr.ee/notdamare\nkirbydx - wah-wah-sad-trombone-6347.mp3"
+	)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-
-
-func load_from_files():
-	var team = FileAccess.open("res://assets/team_members.txt", FileAccess.READ)
-	var attributions = FileAccess.open("res://assets/attributions.txt", FileAccess.READ)
-
-	var content: String = (
-		"TEAM MEMBERS:\n" + team.get_as_text() + "\n\nATTRIBUTIONS:\n" + attributions.get_as_text()
-	)
-	%CreditsText.text = content
 
 
 #region signal funcs

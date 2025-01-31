@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnb0pjry7ghx1"]
+[gd_scene load_steps=6 format=3 uid="uid://dnb0pjry7ghx1"]
 
 [ext_resource type="Script" path="res://source/scenes/game/end_screens/win_screen.gd" id="1_vwuvw"]
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="2_c38yv"]
@@ -11,6 +11,8 @@ colors = PackedColorArray(0.666667, 0, 0.101961, 1, 0.466667, 0, 0.0666667, 1)
 gradient = SubResource("Gradient_3ejgu")
 fill_from = Vector2(0.477064, 1)
 fill_to = Vector2(0.449541, 0.53211)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5dpye"]
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -37,13 +39,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -231.0
-offset_top = -239.0
-offset_right = 232.0
-offset_bottom = 50.0
+offset_left = -546.0
+offset_top = -280.5
+offset_right = 546.0
+offset_bottom = 280.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_c38yv")
+theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center]You have gained the influence required to be freed. Many cower in fear as you show off your previously lost power and destroy the realm.[/center]"
 
@@ -60,6 +63,7 @@ offset_right = 355.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_c38yv")
-text = "Back to main menu"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5dpye")
+text = "Main Menu"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

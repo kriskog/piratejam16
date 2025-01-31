@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ytwxkd4co1gm"]
+[gd_scene load_steps=7 format=3 uid="uid://ytwxkd4co1gm"]
 
 [ext_resource type="Script" path="res://source/scenes/game/end_screens/lose_screen.gd" id="1_4vr07"]
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_51x31"]
@@ -12,6 +12,8 @@ colors = PackedColorArray(0.666667, 0, 0.101961, 1, 0.466667, 0, 0.0705882, 1)
 gradient = SubResource("Gradient_cjk7l")
 fill_from = Vector2(0.527523, 1)
 fill_to = Vector2(0.46789, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_66usk"]
 
 [node name="LoseScreen" type="Control"]
 layout_mode = 3
@@ -38,13 +40,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -231.5
-offset_top = -144.5
-offset_right = 231.5
-offset_bottom = 144.5
+offset_left = -546.0
+offset_top = -280.5
+offset_right = 546.0
+offset_bottom = 280.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_51x31")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]You have run out of influence and your cult has disbanded. You will slumber for uncountable years until someone else tries to awaken you[/center]"
 
@@ -61,7 +64,8 @@ offset_right = 355.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_51x31")
-text = "Back to main menu"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_66usk")
+text = "Main Menu"
 
 [node name="wompwomp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_tt6mg")

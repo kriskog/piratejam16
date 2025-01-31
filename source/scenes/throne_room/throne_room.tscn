@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://btieu1cno5o6k"]
+[gd_scene load_steps=21 format=3 uid="uid://btieu1cno5o6k"]
 
 [ext_resource type="Script" path="res://source/scenes/throne_room/throne_room.gd" id="1_6h3mq"]
-[ext_resource type="PackedScene" path="res://source/scenes/ui/elements/TEMPORARYBACKBUTTON.tscn" id="3_lxolc"]
+[ext_resource type="PackedScene" uid="uid://7codxq0yg473" path="res://source/scenes/ui/elements/TEMPORARYBACKBUTTON.tscn" id="3_lxolc"]
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="4_77ieo"]
+[ext_resource type="FontFile" uid="uid://bgqetfc1tfv7g" path="res://assets/fonts/Kenney Mini.ttf" id="4_82cux"]
+[ext_resource type="Script" path="res://source/scenes/throne_room/pause_button.gd" id="5_51juv"]
 [ext_resource type="AudioStream" uid="uid://cvqk7e3yl4y22" path="res://assets/sounds/01-Audio 1.wav" id="5_qxxja"]
 [ext_resource type="PackedScene" uid="uid://bh3gawj40w8gw" path="res://source/scenes/ui/menus/pause_menu.tscn" id="6_3ascw"]
 [ext_resource type="AudioStream" uid="uid://bpnuj6mp0aoq3" path="res://assets/sounds/02-Audio 2.wav" id="6_q4sre"]
@@ -18,6 +20,14 @@ colors = PackedColorArray(0, 0.466667, 0.396078, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_kbart")
 fill_from = Vector2(0.444954, 0)
 fill_to = Vector2(0.417431, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gn7ge"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4g2m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2yiy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sqijn"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7n2rf"]
 random_pitch = 1.98
@@ -41,7 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6h3mq")
 
-[node name="PLACEHOLDER BG" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,7 +128,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_77ieo")
 bbcode_enabled = true
-text = "[center]Cult Size[/center]"
+text = "[center]Cult
+Size[/center]"
 
 [node name="ReagentsLabel" type="RichTextLabel" parent="UI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -199,8 +210,28 @@ layout_mode = 2
 theme = ExtResource("4_77ieo")
 text = "States"
 
+[node name="PauseButton" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = -31.0
+offset_right = 108.0
+offset_bottom = 137.0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_82cux")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gn7ge")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d4g2m")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m2yiy")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sqijn")
+text = "ii"
+script = ExtResource("5_51juv")
+
 [node name="InfluenceTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 
 [node name="EventPosition" type="Control" parent="."]
 layout_mode = 1
@@ -211,13 +242,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="PauseMenu" parent="." instance=ExtResource("6_3ascw")]
-unique_name_in_owner = true
-visible = false
-visibility_layer = 2
-z_index = 100
-layout_mode = 1
 
 [node name="pops" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_7n2rf")
@@ -230,6 +254,13 @@ pitch_scale = 1.22
 [node name="main_theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_32ofq")
 parameters/looping = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_3ascw")]
+unique_name_in_owner = true
+visible = false
+mouse_force_pass_scroll_events = false
 
 [connection signal="pressed" from="UI/SaveStates/Save" to="." method="_on_save_pressed"]
 [connection signal="timeout" from="InfluenceTimer" to="." method="_on_influence_timer_timeout"]
