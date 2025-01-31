@@ -1,10 +1,12 @@
 extends Control
 
 @onready var wompwomp: AudioStreamPlayer = $wompwomp
+@onready var text_box: RichTextLabel = $RichTextLabel
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	text_box.text = Texts.end_text
 	wompwomp.play()
 
 

@@ -67,8 +67,8 @@ var _events: Array = [
 	"res://source/scenes/game/events/inquisitors_event.tscn",
 	"res://source/scenes/game/events/intruder_event.tscn",
 	"res://source/scenes/game/events/left_event.tscn",
-	"res://source/scenes/game/events/miracle_event.gd",
-	"res://source/scenes/game/events/monster_event.gd",
+	"res://source/scenes/game/events/miracle_event.tscn",
+	"res://source/scenes/game/events/monster_event.tscn",
 	"res://source/scenes/game/events/moon_event.tscn",
 	"res://source/scenes/game/events/night_event.tscn",
 	"res://source/scenes/game/events/noble_event.tscn",
@@ -94,7 +94,7 @@ var _events: Array = [
 var _prev_event: String = ""
 
 # Main game resource
-var _influence: int = 0:
+var _influence: int = 20:
 	get = get_influence,
 	set = set_influence
 
@@ -486,6 +486,7 @@ func _influence_win() -> void:
 
 
 func _influence_loss() -> void:
+	Texts.end_text = "No one speaks your name. No one whispers your teachings in the dark. The world moves on, indifferent to your existence. The cult has withered, its influence erased. You are nothing but a footnote in forgotten history."
 	get_tree().change_scene_to_file("res://source/scenes/game/end_screens/lose_screen.tscn")
 
 
@@ -494,7 +495,8 @@ func _chaos_full() -> void:
 
 
 func _chaos_empty() -> void:
-	print("Chaos Empty")
+	Texts.end_text = "There is no more fear. No more whispered rumors. No more signs of your influence in the shadows. The people sleep peacefully, and the city guards no longer watch the streets with unease. Without chaos, there is no room for you. You have been erased."
+	get_tree().change_scene_to_file("res://source/scenes/game/end_screens/lose_screen.tscn")
 
 
 func _chaos_low() -> void:
@@ -514,7 +516,8 @@ func _money_full() -> void:
 
 
 func _money_empty() -> void:
-	print("Money Empty")
+	Texts.end_text = "Gold no longer flows, and with it, your grip weakens. No bribes, no offerings, no means to sustain the faithful. The cult fractures, its disciples scattering like rats from a sinking ship. You, the vessel of a higher will, are left to rust in the dark, unheard and unheeded. Without wealth, power is but an illusion."
+	get_tree().change_scene_to_file("res://source/scenes/game/end_screens/lose_screen.tscn")
 
 
 func _money_low() -> void:
@@ -534,7 +537,8 @@ func _cult_size_full() -> void:
 
 
 func _cult_size_empty() -> void:
-	print("Cult Size Empty")
+	Texts.end_text = "No ears remain to hear your whispers. No hands lift in devotion. The last of your followers has perished or fled, and with them, your purpose fades. You are an empty vessel, a forgotten relic, abandoned by those who once obeyed. The higher being you served does not weep—It simply waits for another, more worthy voice."
+	get_tree().change_scene_to_file("res://source/scenes/game/end_screens/lose_screen.tscn")
 
 
 func _cult_size_low() -> void:
@@ -554,7 +558,8 @@ func _reagents_full() -> void:
 
 
 func _reagents_empty() -> void:
-	print("Reagents Empty")
+	Texts.end_text = "The rituals fail. The dark forces turn away from your pleas. Your followers lose faith as the miracles cease. Without reagents, there is no magic, no power, no future. Your cult is just another group of lunatics, doomed to fade into irrelevance."
+	get_tree().change_scene_to_file("res://source/scenes/game/end_screens/lose_screen.tscn")
 
 
 func _reagents_low() -> void:
