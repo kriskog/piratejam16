@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4dnm8piv8tvd"]
+[gd_scene load_steps=9 format=3 uid="uid://b4dnm8piv8tvd"]
 
 [ext_resource type="Theme" uid="uid://cn762radik7xw" path="res://assets/themes/default.tres" id="1_6eapn"]
 [ext_resource type="Script" path="res://source/scenes/ui/menus/main_menu.gd" id="1_76osk"]
 [ext_resource type="Texture2D" uid="uid://s088nfy73lyf" path="res://assets/REPLACE_BEFORE_SUBMISSION/mainmenu_placeholder.jpg" id="3_xwug0"]
+[ext_resource type="PackedScene" uid="uid://dcnf2nu2hbogy" path="res://source/scenes/ui/elements/CreditsOverlay.tscn" id="4_7bjh4"]
 [ext_resource type="AudioStream" uid="uid://ovmpjbrynvci" path="res://assets/sounds/click.wav" id="4_mgesy"]
+[ext_resource type="PackedScene" uid="uid://bj1gpalilav3a" path="res://source/scenes/ui/elements/how_to_play.tscn" id="5_2o6w5"]
+[ext_resource type="AudioStream" uid="uid://c2ktuvpqqysul" path="res://assets/audio/menu_theme.ogg" id="7_g5yp5"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lh026"]
 streams_count = 1
 stream_0/stream = ExtResource("4_mgesy")
-[ext_resource type="PackedScene" uid="uid://dbmxnk2saroru" path="res://source/scenes/ui/elements/CreditsOverlay.tscn" id="4_7bjh4"]
-[ext_resource type="PackedScene" uid="uid://n4tujvohg0o4" path="res://source/scenes/ui/elements/how_to_play.tscn" id="5_2o6w5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -118,11 +119,13 @@ focus_previous = NodePath("../CreditsButton")
 text = "Exit Game"
 flat = true
 
-<<<<<<< HEAD
+[node name="menu_theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_g5yp5")
+
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_lh026")
 pitch_scale = 1.22
-=======
+
 [node name="CreditsOverlay" parent="." instance=ExtResource("4_7bjh4")]
 unique_name_in_owner = true
 layout_mode = 1
@@ -130,4 +133,3 @@ layout_mode = 1
 [node name="HowToPlay" parent="." instance=ExtResource("5_2o6w5")]
 unique_name_in_owner = true
 layout_mode = 1
->>>>>>> 72f7a9a (Last menu stuff, etc etc)

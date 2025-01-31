@@ -10,7 +10,7 @@ script = ExtResource("2_4sh02")
 text = "A child is born under a dark omen. What fate shall they meet"
 
 [node name="Option1" parent="." index="1"]
-text = "Sackrifice them to the gods"
+text = "Sacrifice them to the gods"
 
 [node name="Option2" parent="." index="2"]
 text = "Raise them as our champion"

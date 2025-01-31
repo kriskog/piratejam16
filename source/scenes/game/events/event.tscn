@@ -51,22 +51,36 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Option1" type="Button" parent="."]
+unique_name_in_owner = true
 z_index = 5
 layout_mode = 2
 offset_left = 13.0
 offset_top = 197.0
 offset_right = 365.0
 offset_bottom = 295.0
+focus_neighbor_left = NodePath("../Option2")
+focus_neighbor_top = NodePath("../Option2")
+focus_neighbor_right = NodePath("../Option2")
+focus_neighbor_bottom = NodePath("../Option2")
+focus_next = NodePath("../Option2")
+focus_previous = NodePath("../Option2")
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt u"
 autowrap_mode = 3
 
 [node name="Option2" type="Button" parent="."]
+unique_name_in_owner = true
 z_index = 5
 layout_mode = 2
 offset_left = 14.0
 offset_top = 326.0
 offset_right = 367.0
 offset_bottom = 413.0
+focus_neighbor_left = NodePath("../Option1")
+focus_neighbor_top = NodePath("../Option1")
+focus_neighbor_right = NodePath("../Option1")
+focus_neighbor_bottom = NodePath("../Option1")
+focus_next = NodePath("../Option1")
+focus_previous = NodePath("../Option1")
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt u"
 autowrap_mode = 3
 

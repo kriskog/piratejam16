@@ -1,6 +1,7 @@
 extends Control
 
 @onready var click: AudioStreamPlayer = $Click
+@onready var menu_theme: AudioStreamPlayer = $menu_theme
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,10 +18,13 @@ func _ready() -> void:
 
 #region Signal funcs
 
+func _play_theme() -> void:
+	menu_theme.play()
 
 # Makes sure we do the important things when the menu opens. Set button focus, menu music?
 func _on_tree_entered() -> void:
 	%StartGameButton.grab_focus()
+	_play_theme()
 
 
 func _on_tree_exited() -> void:
@@ -46,4 +50,3 @@ func _on_credits_pressed() -> void:
 
 func _on_exit_game_pressed() -> void:
 	click.play()
-

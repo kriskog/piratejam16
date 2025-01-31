@@ -16,7 +16,4 @@ text = "Bless their journey"
 text = "Keep them close"
 
 [node name="TextureRect2" parent="." index="4"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 433.0
-offset_bottom = 489.0
+layout_mode = 0

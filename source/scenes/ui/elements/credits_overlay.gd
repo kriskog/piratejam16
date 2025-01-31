@@ -1,5 +1,7 @@
 extends Control
 
+@onready var click: AudioStreamPlayer = $Click
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,6 +31,7 @@ func load_from_files():
 
 func _on_close_pressed() -> void:
 	# Signals main to kill current scenes and bring up main menu.
+	click.play()
 	hide()
 
 
